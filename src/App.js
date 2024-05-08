@@ -1,24 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+/* MAIN */
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+
+/* PAGES */
+import "./global/global.scss";
+import Home from "./pages/Home";
+import Servers from "./pages/dashboard/Servers";
+
+import Login from "./pages/auth/Login";
+import Logout from "./pages/auth/Logout";
+import Error401 from "./pages/errors/Error401";
+
+import ProtectedAuth from "./modules/ProtectedAuth";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter basename="/">
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/logout" element={<Logout />} />
+        <Route path="/error401" element={<Error401 />} />
+
+        <Route
+          path="/dashboard"
+          element={
+            <ProtectedAuth>
+              <Servers />
+            </ProtectedAuth>
+          }
+        />
+      </Routes>
+    </BrowserRouter>
   );
 }
 

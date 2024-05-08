@@ -1,0 +1,109 @@
+@import "../global/colors.scss", "../global/mixins.scss";
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  @include default;
+  img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+
+  .logo {
+    box-shadow: 3px 3px 100px 10px $primary-emphasis;
+    transition: box-shadow 0.2s ease-in-out, transform 0.2s ease-in-out;
+    &:hover {
+      transform: scale(1.1);
+      box-shadow: none;
+    }
+  }
+
+  #menu-items {
+    display: flex;
+    justify-content: space-evenly;
+    gap: 20px;
+    align-items: center;
+    padding: 0 20px;
+    li {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: color 0.1s ease-in-out;
+      cursor: pointer;
+      color: $secondary;
+
+      &:hover {
+        color: $hover;
+      }
+    }
+    .emphasis {
+      color: $primary-emphasis;
+      font-weight: bold;
+
+      i {
+        margin-right: 5px;
+        transition: color 0.1s ease-in-out;
+      }
+
+      &:hover {
+        color: $primary-emphasis;
+
+        i {
+          color: white;
+        }
+      }
+    }
+  }
+
+  p {
+    cursor: pointer;
+    transition: color 0.1s ease-in-out;
+    color: $secondary;
+    &:hover {
+      color: $hover;
+      transform: scale(1.01);
+    }
+  }
+
+  .category {
+    transform: scale(2);
+    color: $primary-emphasis;
+    cursor: pointer;
+    transition: color 0.2s ease-in-out;
+    display: none;
+  }
+}
+
+@media screen and (max-width: $tablet) {
+  nav {
+    #menu-items {
+      display: none;
+      position: absolute;
+      flex-direction: column;
+      justify-content: flex-start;
+      padding-top: 100px;
+      gap: 30px;
+      background-color: rgba(0, 0, 0, 0.9);
+      width: 100%;
+      height: 100dvh;
+      top: 0;
+      left: 0;
+
+      li {
+        font-size: 1.5em;
+      }
+
+      .emphasis {
+        i {
+          display: none;
+        }
+      }
+    }
+
+    .category {
+      display: block;
+    }
+  }
+}

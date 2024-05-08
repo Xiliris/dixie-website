@@ -1,0 +1,9 @@
+$mobile: 420px;
+$tablet: 768px;
+$desktop: 1100px;
+
+@mixin default {
+  max-width: 1100px;
+  padding: 18px 50px;
+  margin: 0 auto;
+}

@@ -1,0 +1,84 @@
+@import "../global/colors.scss", "../global/mixins.scss";
+
+.profile {
+  position: relative;
+
+  #profile-menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+    }
+
+    span {
+      transition: transform 0.2s ease-in-out;
+    }
+  }
+
+  ul {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 5px 0;
+    position: absolute;
+    top: 50px;
+    right: 0;
+    background-color: $backgroud;
+    border: 1px solid $backgroud-emphasis;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.2s ease-in-out, opacity 0.1s ease-in;
+    min-width: 200px;
+
+    hr {
+      width: 100%;
+      border: none;
+      border-bottom: 1px solid $backgroud-emphasis;
+      margin: 5px 0;
+    }
+
+    a {
+      width: 100%;
+    }
+
+    li {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 5px;
+      padding: 10px 20px;
+      cursor: pointer;
+      color: $secondary;
+      width: 100%;
+      transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+
+      &:hover {
+        background-color: $backgroud-emphasis;
+        color: $primary;
+      }
+    }
+
+    .danger {
+      color: $danger;
+    }
+
+    .emphasis {
+      color: $primary-emphasis;
+    }
+  }
+
+  .acitive {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+
+  .hidden {
+    transform: translateY(-10px);
+    opacity: 0;
+  }
+}
