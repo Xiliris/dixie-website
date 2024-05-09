@@ -8,7 +8,6 @@ function Login() {
   const [params] = useSearchParams();
   const cookies = new Cookies(null, { path: "/" });
   const code = params.get("code");
-  console.log(code);
 
   useEffect(() => {
     async function login() {
