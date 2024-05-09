@@ -7,7 +7,7 @@ import config from "../../config.json";
 import userGuilds from "../../modules/userGuilds";
 import itemAnimation from "../../animations/itemAnimation";
 
-require("./Servers.scss");
+import "./Servers.scss";
 
 function Servers() {
   const [servers, setServers] = useState([]);

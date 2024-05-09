@@ -7,15 +7,19 @@ async function getUserGuilds() {
 
   if (!token) return null;
 
-  const { data, status } = await axios.get("/dashboard/servers", {
-    headers: {
-      token,
-    },
-  });
+  const resposne = await axios
+    .get("/dashboard/servers", {
+      headers: {
+        token,
+      },
+    })
+    .catch((err) => {
+      return null;
+    });
 
-  if (status !== 200) return null;
+  if (resposne.status !== 200) return null;
 
-  return data;
+  return resposne.data;
 }
 
 export default getUserGuilds;
