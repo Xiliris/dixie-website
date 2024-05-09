@@ -56,7 +56,6 @@
       color: $secondary;
       width: 100%;
       transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
-
       &:hover {
         background-color: $backgroud-emphasis;
         color: $primary;
@@ -75,10 +74,12 @@
   .acitive {
     transform: translateY(0px);
     opacity: 1;
+    height: initial;
   }
 
   .hidden {
     transform: translateY(-10px);
     opacity: 0;
+    height: 0;
   }
 }

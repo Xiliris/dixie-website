@@ -1,9 +1,8 @@
 import { Link } from "react-router-dom";
-import Cookies from "universal-cookie";
 import { useEffect, useState } from "react";
 import logo from "../imgs/dixie.svg";
 import config from "../config.json";
-import axios from "../axios";
+import getUserData from "../modules/userData";
 
 import "./Navbar.scss";
 import "./Profile.scss";
@@ -11,20 +10,16 @@ import "./Profile.scss";
 function Navbar() {
   const [menuState, setMenuState] = useState("menu");
   const [user, setUser] = useState(null);
-  const cookies = new Cookies(null, { path: "/" });
 
   useEffect(() => {
-    const token = cookies.get("token");
-    if (token) {
-      async function getUser() {
-        const { data } = await axios.get(`/auth/login/${token}`);
-        if (data) {
-          await cookies.set("token", data.token, { path: "/" });
-          setUser(data.user);
-        }
+    async function getUser() {
+      const user = await getUserData();
+
+      if (user) {
+        setUser(user);
       }
-      getUser();
     }
+    getUser();
   }, []);
 
   function toggleMenu() {
