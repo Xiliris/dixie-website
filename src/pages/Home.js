@@ -17,11 +17,14 @@ function Home() {
           designed to fulfill all your needs.
         </p>
         <div>
-          <Link to={config.redirect_url}>
-            <button className="emphasis">
-              <i className="fa-brands fa-discord"></i>Add to Discord
-            </button>
-          </Link>
+          <button
+            className="btn-emphasis"
+            onClick={() => {
+              window.open(config.invite_url);
+            }}
+          >
+            <i className="fa-brands fa-discord"></i>Add to Discord
+          </button>
           <Link to="/#features">
             <button>Features</button>
           </Link>

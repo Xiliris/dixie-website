@@ -10,7 +10,7 @@ import Login from "./pages/auth/Login";
 import Logout from "./pages/auth/Logout";
 import Error401 from "./pages/errors/Error401";
 
-import ProtectedAuth from "./modules/ProtectedAuth";
+import ProtectedAuth from "./pages/auth/ProtectedAuth";
 
 function App() {
   return (
