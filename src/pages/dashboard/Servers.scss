@@ -29,26 +29,33 @@
 
     article {
       border: 1px solid $backgroud-emphasis;
-      border-radius: 8px;
+      background: linear-gradient(45deg, $backgroud-emphasis, $backgroud);
       padding: 20px;
+      border-radius: 8px;
+      overflow: hidden;
 
       display: flex;
       flex-direction: column;
 
-      img {
-        width: 75px;
-        height: 75px;
-        border-radius: 50%;
-        border: 1px solid $backgroud-emphasis;
-      }
+      div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
 
-      h3 {
-        margin-top: 20px;
-        color: $secondary;
-        width: 90%;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
+        img {
+          width: 75px;
+          height: 75px;
+          border-radius: 8px;
+        }
+
+        h3 {
+          color: $primary;
+          width: 90%;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
       }
 
       a {

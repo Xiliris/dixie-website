@@ -6,7 +6,7 @@ function ProtectedAuth({ children }) {
   const token = cookies.get("token");
 
   if (!token || token === null || token === undefined) {
-    return <Navigate to="/error401" replace />;
+    return <Navigate to="/error/401" replace />;
   }
 
   return children;
