@@ -1,11 +1,13 @@
 import { useState } from "react";
-import Navbar from "../../components/Navbar";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import config from "../../config.json";
 import userGuilds from "../../modules/userGuilds";
 import itemAnimation from "../../animations/itemAnimation";
+
+import Navbar from "../../components/Navbar";
+import Header from "../../components/Header";
 
 import "./Servers.scss";
 
@@ -25,6 +27,7 @@ function Servers() {
   return (
     <>
       <Navbar />
+      <Header title="Servers" />
       <div id="servers">
         <h1>Select a server</h1>
         <p style={{ display: serverStatus }}>
