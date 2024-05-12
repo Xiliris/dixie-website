@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
 import config from "../../config";
 
-import "./Error401.scss";
-function Error401() {
+import "./Errors.scss";
+function Error() {
   return (
-    <main id="error401">
+    <main id="errors">
       <h1>Error 401 (Unauthorized)</h1>
       <p>
         You are not authorized to view this page. Please log in to access this
@@ -17,4 +17,4 @@ function Error401() {
   );
 }
 
-export default Error401;
+export default Error;

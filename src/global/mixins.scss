@@ -20,21 +20,19 @@ $desktop: 1100px;
     color 0.1s ease-in-out;
 
   &:hover {
-    color: $primary;
-    background-color: $secondary-emphasis;
-    border: 1px solid $secondary-emphasis;
+    background-color: $primary-emphasis-hover;
+    border: 1px solid $primary-emphasis-hover;
   }
 }
 
 @mixin secondaryButton {
   @include primaryButton;
-  background-color: $backgroud;
-  border: 1px solid $backgroud;
+  background-color: $secondary;
+  border: 1px solid $secondary;
   color: white;
 
   &:hover {
-    color: $primary;
-    background-color: $backgroud-emphasis;
-    border: 1px solid $backgroud-emphasis;
+    background-color: $secondary-emphasis;
+    border: 1px solid $secondary-emphasis;
   }
 }
