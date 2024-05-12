@@ -16,6 +16,8 @@ import Error404 from "./pages/errors/Error404";
 import ProtectedAuth from "./pages/auth/ProtectedAuth";
 import ProtectedPermissions from "./pages/auth/ProtectedPermissions";
 
+import PersonalBot from "./pages/dashboard/PersonalBot";
+
 function App() {
   return (
     <BrowserRouter basename="/">
@@ -38,6 +40,16 @@ function App() {
             <ProtectedAuth>
               <ProtectedPermissions>
                 <Dashboard />
+              </ProtectedPermissions>
+            </ProtectedAuth>
+          }
+        />
+        <Route
+          path="/dashboard/:id/personal-bot"
+          element={
+            <ProtectedAuth>
+              <ProtectedPermissions>
+                <PersonalBot />
               </ProtectedPermissions>
             </ProtectedAuth>
           }
