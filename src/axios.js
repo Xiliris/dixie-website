@@ -1,7 +1,7 @@
 import Axios from "axios";
 
 const axios = Axios.create({
-  baseURL: "dixie-server:8080",
+  baseURL: "https://dixie-server.onrender.com",
 });
 
 export default axios;
