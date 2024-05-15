@@ -2,9 +2,10 @@ import "./PersonalBot.scss";
 import Navbar from "../../../components/Navbar";
 import Header from "../../../components/Header";
 import axios from "../../../axios";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import defaultLogo from "../../../imgs/dixie.svg";
+import config from "../../../config";
 
 function PersonalBot() {
   const { id } = useParams();
@@ -22,7 +23,7 @@ function PersonalBot() {
     }
 
     getBotToken();
-  }, []);
+  }, [id]);
 
   const onSubmitLogin = async (e) => {
     e.preventDefault();
@@ -43,18 +44,37 @@ function PersonalBot() {
     }
   };
 
+  function changeImage(e) {
+    const fileInput = document.querySelector("input[type=file]");
+    const img = e.target;
+
+    fileInput.click();
+
+    fileInput.onchange = (e) => {
+      const file = e.target.files[0];
+      const reader = new FileReader();
+
+      reader.onload = (e) => {
+        img.src = e.target.result;
+      };
+
+      reader.readAsDataURL(file);
+    };
+  }
+
   const onSubmitPreview = async (e) => {
     const form = e.target;
-    const nameInput = form.elements[0];
-    const statusInput = form.elements[1];
-    const descriptionInput = form.elements[2];
+
+    const fileInput = form.elements[0];
+    const nameInput = form.elements[1];
+    const statusInput = form.elements[2];
+    const descriptionInput = form.elements[3];
 
     nameInput.style.border = "1px solid #0f060f";
     statusInput.style.border = "1px solid #0f060f";
     descriptionInput.style.border = "1px solid #0f060f";
 
     const validateFields = () => {
-      e.preventDefault();
       let isValid = true;
 
       if (!nameInput.value.trim()) {
@@ -76,14 +96,20 @@ function PersonalBot() {
     };
 
     if (validateFields()) {
-      const response = await axios.post(`/client/apperence`, {
-        name: nameInput.value,
-        status: statusInput.value,
-        description: descriptionInput.value,
-        guildId: id,
-      });
+      const formData = new FormData();
 
-      console.log(response.data);
+      if (fileInput.files[0]) {
+        formData.append("avatar", fileInput.files[0]);
+      }
+
+      formData.append("name", nameInput.value);
+      formData.append("status", statusInput.value);
+      formData.append("description", descriptionInput.value);
+      formData.append("guildId", id);
+
+      await axios.post(`/client/apperence/${id}`, formData, {
+        headers: { "Content-Type": "multipart/form-data" },
+      });
     }
   };
 
@@ -92,12 +118,28 @@ function PersonalBot() {
       <Navbar />
       <Header title="Personal Bot" />
       <main className="personal-bot">
-        <h1>PERSONAL BOT</h1>
+        <div className="title">
+          <h1>PERSONAL BOT</h1>
+          <Link to={`/dashboard/${id}`}>
+            <span className="material-symbols-outlined">arrow_back_ios</span>
+          </Link>
+        </div>
         <section className="bot-preview">
           <h2>Bot Preview</h2>
           <form onSubmit={onSubmitPreview}>
             <div>
-              <img src={defaultLogo} alt="Bot avatar" />
+              <img
+                src={
+                  botAppearance
+                    ? `${config.baseUrl}/avatars/${botAppearance.avatar}`
+                    : defaultLogo
+                }
+                alt="Bot avatar"
+                onClick={(e) => {
+                  changeImage(e);
+                }}
+              />
+              <input type="file" accept="image/*" name="avatar" />
               <div className="title-container">
                 <input
                   type="text"
