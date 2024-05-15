@@ -1,5 +1,6 @@
 {
   "redirect_url": "https://discord.com/oauth2/authorize?client_id=902824536460918826&response_type=code&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Flogin&scope=identify+guilds+email+guilds.members.read",
   "invite_url": "https://discord.com/api/oauth2/authorize?client_id=902824536460918826&permissions=8&scope=bot%20applications.commands",
-  "support_url": "https://discord.gg/AFMg8GZkfS"
+  "support_url": "https://discord.gg/AFMg8GZkfS",
+  "baseUrl": "http://localhost:8080"
 }
