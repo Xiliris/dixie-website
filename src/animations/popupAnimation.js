@@ -1,11 +1,13 @@
-const itemAnimation = {
+const popupAnimation = {
   initial: {
-    x: -100,
+    y: "50px",
+    x: "50%",
     opacity: 0,
   },
 
   animate: () => ({
-    x: 0,
+    y: "0px",
+    x: "50%",
     opacity: 1,
     transition: {
       type: "tween",
@@ -14,4 +16,4 @@ const itemAnimation = {
   }),
 };
 
-export default itemAnimation;
+export default popupAnimation;

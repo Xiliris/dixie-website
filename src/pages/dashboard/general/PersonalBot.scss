@@ -1,0 +1,149 @@
+@import "../../../global/mixins.scss", "../../../global/colors.scss";
+
+.personal-bot {
+  @include dashDefault;
+
+  h1 {
+    @include title;
+  }
+
+  .bot-preview {
+    form {
+      display: flex;
+
+      div {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        gap: 10px;
+        width: 100%;
+        img {
+          width: 100px;
+          height: 100px;
+          border-radius: 12px;
+        }
+
+        .title-container {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          flex-direction: column;
+          gap: 10px;
+          input {
+            margin: 0;
+            width: 100%;
+          }
+        }
+      }
+
+      textarea {
+        @include textInput;
+        width: 100%;
+        resize: none;
+        margin-top: 10px;
+        height: 125px;
+        font-size: 1em;
+      }
+    }
+  }
+
+  section {
+    margin-top: 40px;
+    h2 {
+      color: $primary;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+    form {
+      display: flex;
+      justify-content: flex-start;
+      align-items: flex-start;
+      flex-direction: column;
+
+      label {
+        color: $primary;
+        font-size: 1.2em;
+        span {
+          color: $danger;
+        }
+      }
+
+      input {
+        @include textInput;
+        width: 100%;
+        margin-top: 10px;
+        font-size: 1em;
+      }
+
+      button {
+        @include primaryButton;
+        margin-top: 10px;
+        padding: 5px 20px;
+        border-radius: 5px;
+        font-size: 1em;
+        margin-left: auto;
+      }
+    }
+  }
+
+  .how-to {
+    margin-top: 50px;
+    h2 {
+      color: $primary;
+    }
+
+    article {
+      div {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 30px;
+
+        h4 {
+          color: $primary-emphasis;
+        }
+
+        p {
+          color: $primary;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: $mobile) {
+  .personal-bot {
+    h1 {
+      font-size: 2em;
+    }
+
+    form {
+      label {
+        font-size: 1em;
+      }
+
+      input {
+        font-size: 0.9em;
+      }
+
+      button {
+        font-size: 0.9em;
+      }
+    }
+
+    .how-to {
+      margin-top: 80px;
+      h2 {
+        font-size: 1.3em;
+      }
+
+      article {
+        p {
+          font-size: 0.8em;
+        }
+      }
+    }
+  }
+}

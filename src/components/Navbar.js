@@ -90,16 +90,16 @@ function UserComponent({ id, avatar }) {
   return (
     <div className="profile">
       <div id="profile-menu" onClick={toggleProfileMenu}>
-        <img
-          src={`https://cdn.discordapp.com/avatars/${id}/${avatar}`}
-          alt="User avatar"
-        />
         <span
           className="material-symbols-outlined"
           style={{ transform: arrowState }}
         >
           expand_more
         </span>
+        <img
+          src={`https://cdn.discordapp.com/avatars/${id}/${avatar}`}
+          alt="User avatar"
+        />
       </div>
 
       <ul className={menuState}>
