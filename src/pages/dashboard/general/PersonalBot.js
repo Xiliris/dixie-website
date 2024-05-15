@@ -10,14 +10,17 @@ function PersonalBot() {
   const { id } = useParams();
   const [botToken, setBotToken] = useState("");
   const [tokenError, setTokenError] = useState("");
+  const [botAppearance, setBotAppearance] = useState({});
   useEffect(() => {
     async function getBotToken() {
       const response = await axios.get(`/dashboard/personal-bot/${id}`);
 
       if (response.status === 200) {
         setBotToken(response.data.token);
+        setBotAppearance(response.data);
       }
     }
+
     getBotToken();
   }, []);
 
@@ -96,11 +99,22 @@ function PersonalBot() {
             <div>
               <img src={defaultLogo} alt="Bot avatar" />
               <div className="title-container">
-                <input type="text" placeholder="Enter bot name" />
-                <input type="text" placeholder="Status" />
+                <input
+                  type="text"
+                  placeholder="Enter bot name"
+                  defaultValue={botAppearance.name}
+                />
+                <input
+                  type="text"
+                  placeholder="Status"
+                  defaultValue={botAppearance.status}
+                />
               </div>
             </div>
-            <textarea placeholder="Enter bot description" />
+            <textarea
+              placeholder="Enter bot description"
+              defaultValue={botAppearance.description}
+            />
             <button type="submit">Save</button>
           </form>
         </section>
