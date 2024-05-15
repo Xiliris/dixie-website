@@ -49,7 +49,6 @@ function Servers() {
 }
 
 function ServerItem({ server, index }) {
-  console.log(index);
   return (
     <motion.article
       variants={itemAnimation}
