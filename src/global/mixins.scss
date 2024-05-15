@@ -10,12 +10,21 @@ $desktop: 1100px;
   margin: 0 auto;
 }
 
+@mixin dashDefault {
+  @include default;
+  margin: 70px auto;
+}
+
+@mixin title {
+  color: $primary-emphasis;
+  text-transform: uppercase;
+}
+
 @mixin primaryButton() {
   background-color: $primary-emphasis;
   border: 1px solid $primary-emphasis;
   color: $backgroud;
   cursor: pointer;
-  font-size: 1em;
   transition: background-color 0.1s ease-in-out, border 0.1s ease-in-out,
     color 0.1s ease-in-out;
 
@@ -34,5 +43,22 @@ $desktop: 1100px;
   &:hover {
     background-color: $secondary-emphasis;
     border: 1px solid $secondary-emphasis;
+  }
+}
+
+@mixin textInput() {
+  border: 1px solid $backgroud;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 1em;
+  color: $primary;
+  background-color: $backgroud-emphasis;
+
+  &:focus {
+    border: 1px solid $primary-emphasis;
+    outline: none;
+  }
+  &:active {
+    border: 1px solid $primary-emphasis;
   }
 }
