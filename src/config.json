@@ -2,5 +2,5 @@
   "redirect_url": "https://discord.com/oauth2/authorize?client_id=902824536460918826&response_type=code&redirect_uri=https%3A%2F%2Fdixiebot.com%2Flogin&scope=identify+guilds+email+guilds.join",
   "invite_url": "https://discord.com/api/oauth2/authorize?client_id=902824536460918826&permissions=8&scope=bot%20applications.commands",
   "support_url": "https://discord.gg/AFMg8GZkfS",
-  "baseUrl": "http://localhost:8080"
+  "baseUrl": "https://dixie-server.onrender.com"
 }
