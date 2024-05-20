@@ -1,73 +1,7 @@
-@import "../../../global/mixins.scss", "../../../global/colors.scss";
+@import "../global/mixins.scss", "../global/colors.scss";
 
-.personal-bot {
+.personal-bot-login {
   @include dashDefault;
-
-  .title {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    h1 {
-      @include title;
-    }
-
-    span {
-      color: $primary-emphasis;
-      font-size: 2em;
-      cursor: pointer;
-      transition: color 0.3s ease-in-out;
-
-      &:hover {
-        color: $primary;
-      }
-    }
-  }
-
-  .bot-preview {
-    form {
-      display: flex;
-
-      div {
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-end;
-        gap: 10px;
-        width: 100%;
-        input[type="file"] {
-          display: none;
-        }
-
-        img {
-          width: 100px;
-          height: 100px;
-          border-radius: 12px;
-          object-fit: contain;
-          cursor: pointer;
-        }
-
-        .title-container {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          flex-direction: column;
-          gap: 10px;
-          input {
-            margin: 0;
-            width: 100%;
-          }
-        }
-      }
-
-      textarea {
-        @include textInput;
-        width: 100%;
-        resize: none;
-        margin-top: 10px;
-        height: 125px;
-        font-size: 1em;
-      }
-    }
-  }
 
   section {
     margin-top: 40px;

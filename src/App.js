@@ -15,7 +15,6 @@ import Error404 from "./pages/errors/Error404";
 
 import ProtectedAuth from "./pages/auth/ProtectedAuth";
 import ProtectedPermissions from "./pages/auth/ProtectedPermissions";
-
 import PersonalBot from "./pages/dashboard/general/PersonalBot";
 
 function App() {
