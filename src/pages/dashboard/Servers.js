@@ -65,19 +65,9 @@ function ServerItem({ server, index }) {
         <h3>{server.name}</h3>
       </div>
 
-      {server.joined ? (
-        <Link to={`/dashboard/${server.id}`}>
-          <button className="btn-emphasis">Manage</button>
-        </Link>
-      ) : (
-        <button
-          onClick={() => {
-            window.open(config.invite_url);
-          }}
-        >
-          Invite
-        </button>
-      )}
+      <Link to={`/dashboard/${server.id}`}>
+        <button className="btn-emphasis">Manage</button>
+      </Link>
     </motion.article>
   );
 }

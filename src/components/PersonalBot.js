@@ -36,11 +36,12 @@ function PersonalBot({ apperence }) {
     const fileInput = form.elements[0];
     const nameInput = form.elements[1];
     const statusInput = form.elements[2];
-    const descriptionInput = form.elements[3];
+    const activityTypeInput = form.elements[3];
+    const activityInput = form.elements[4];
 
     nameInput.style.border = "1px solid #0f060f";
     statusInput.style.border = "1px solid #0f060f";
-    descriptionInput.style.border = "1px solid #0f060f";
+    activityInput.style.border = "1px solid #0f060f";
 
     const validateFields = () => {
       let isValid = true;
@@ -55,8 +56,13 @@ function PersonalBot({ apperence }) {
         isValid = false;
       }
 
-      if (!descriptionInput.value.trim()) {
-        descriptionInput.style.border = "1px solid red";
+      if (!activityTypeInput.value.trim()) {
+        activityTypeInput.style.border = "1px solid red";
+        isValid = false;
+      }
+
+      if (!activityInput.value.trim()) {
+        activityInput.style.border = "1px solid red";
         isValid = false;
       }
 
@@ -72,7 +78,8 @@ function PersonalBot({ apperence }) {
 
       formData.append("name", nameInput.value);
       formData.append("status", statusInput.value);
-      formData.append("description", descriptionInput.value);
+      formData.append("activityType", activityTypeInput.value);
+      formData.append("activity", activityInput.value);
       formData.append("guildId", id);
 
       await axios
@@ -118,16 +125,28 @@ function PersonalBot({ apperence }) {
               defaultValue={apperence.name}
             />
             <label>Status</label>
-            <input
-              type="text"
-              placeholder="Enter bot status"
-              defaultValue={apperence.status}
-            />
-            <label>Description</label>
-            <textarea
-              placeholder="Enter bot description"
-              defaultValue={apperence.description}
-            ></textarea>
+            <select defaultValue={apperence.status}>
+              <option value="Online">Online</option>
+              <option value="Idle">Idle</option>
+              <option value="DoNotDisturb">Do not disturb</option>
+              <option value="Invisible">Offline</option>
+            </select>
+            <label>Activity</label>
+            <div>
+              <select defaultValue={apperence.activityType}>
+                <option value="Playing">Playing</option>
+                <option value="Watching">Watching</option>
+                <option value="Listening">Listening</option>
+                <option value="Streaming">Streaming</option>
+                <option value="Competing">Competing</option>
+                <option value="Custom">Custom</option>
+              </select>
+              <input
+                type="text"
+                placeholder="What?"
+                defaultValue={apperence.activity}
+              />
+            </div>
             <div>
               <button
                 onClick={() => {
@@ -138,7 +157,7 @@ function PersonalBot({ apperence }) {
               >
                 Invite
               </button>
-              <button type="submit">Save</button>
+              <button type="submit">Update</button>
             </div>
           </form>
         </section>
