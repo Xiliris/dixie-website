@@ -1,0 +1,24 @@
+@import "../../../global/colors.scss", "../../../global/mixins.scss";
+
+.chat-managment {
+  display: flex;
+  main {
+    @include dashDefault;
+    width: 100%;
+    h1 {
+      width: 100%;
+      text-align: center;
+    }
+    form {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
+      gap: 50px;
+      div {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        width: fit-content;
+      }
+    }
+  }
+}

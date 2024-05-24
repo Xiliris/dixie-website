@@ -28,7 +28,9 @@ function PersonalBotLogin() {
       });
 
     if (response && response.status === 200) {
-      window.location.reload();
+      setTimeout(() => {
+        window.location.reload();
+      }, 1000);
     }
   };
 

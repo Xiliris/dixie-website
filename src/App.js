@@ -16,6 +16,7 @@ import Error404 from "./pages/errors/Error404";
 import ProtectedAuth from "./pages/auth/ProtectedAuth";
 import ProtectedPermissions from "./pages/auth/ProtectedPermissions";
 import PersonalBot from "./pages/dashboard/general/PersonalBot";
+import ChatManagment from "./pages/dashboard/managment/ChatManagment";
 
 function App() {
   return (
@@ -49,6 +50,16 @@ function App() {
             <ProtectedAuth>
               <ProtectedPermissions>
                 <PersonalBot />
+              </ProtectedPermissions>
+            </ProtectedAuth>
+          }
+        />
+        <Route
+          path="/dashboard/:id/chat-managment"
+          element={
+            <ProtectedAuth>
+              <ProtectedPermissions>
+                <ChatManagment />
               </ProtectedPermissions>
             </ProtectedAuth>
           }
