@@ -9,21 +9,65 @@ import Header from "../../../components/Header";
 function ChatManagment() {
   const { id } = useParams();
   const [sections, setSections] = useState({
-    LINKS: { enabled: false, punish: "none", time: 0 },
-    SPAM: { enabled: false, punish: "none", time: 0 },
-    BAD_WORDS: { enabled: false, punish: "none", time: 0 },
-    DUPLICATED_TEXT: { enabled: false, punish: "none", time: 0 },
-    REPEATED_MESSAGES: { enabled: false, punish: "none", time: 0 },
-    DISCORD_INVITES: { enabled: false, punish: "none", time: 0 },
-    CAPS: { enabled: false, punish: "none", time: 0 },
-    MASS_MENTION: { enabled: false, punish: "none", time: 0 },
+    LINKS: {
+      enabled: false,
+      punish: "none",
+      time: 0,
+      allowedChannels: [],
+      allowedRoles: [],
+    },
+    SPAM: {
+      enabled: false,
+      punish: "none",
+      time: 0,
+      allowedChannels: [],
+      allowedRoles: [],
+    },
+    BAD_WORDS: {
+      enabled: false,
+      punish: "none",
+      time: 0,
+      allowedChannels: [],
+      allowedRoles: [],
+    },
+    REPEATED_MESSAGES: {
+      enabled: false,
+      punish: "none",
+      time: 0,
+      allowedChannels: [],
+      allowedRoles: [],
+    },
+    DISCORD_INVITES: {
+      enabled: false,
+      punish: "none",
+      time: 0,
+      allowedChannels: [],
+      allowedRoles: [],
+    },
+    CAPS: {
+      enabled: false,
+      punish: "none",
+      time: 0,
+      allowedChannels: [],
+      allowedRoles: [],
+    },
+    MASS_MENTION: {
+      enabled: false,
+      punish: "none",
+      time: 0,
+      allowedChannels: [],
+      allowedRoles: [],
+    },
   });
+
+  const [guildChannels, setGuildChannels] = useState([]);
 
   useEffect(() => {
     axios
       .get(`/dashboard/managment/chat/${id}`)
       .then((response) => {
-        setSections(response.data);
+        setSections(response.data.chat);
+        setGuildChannels(response.data.channels);
       })
       .catch((error) => {
         console.log(error);
@@ -67,6 +111,7 @@ function ChatManagment() {
                 key={section}
                 title={section}
                 data={sections[section]}
+                guildChannels={guildChannels}
                 onChange={handleChange}
               />
             ))}
@@ -78,7 +123,7 @@ function ChatManagment() {
   );
 }
 
-function ItemSection({ title, data, onChange }) {
+function ItemSection({ title, data, onChange, guildChannels }) {
   return (
     <article>
       <div>
@@ -98,13 +143,14 @@ function ItemSection({ title, data, onChange }) {
           <option value="none">none</option>
           <option value="mute">mute</option>
           <option value="warn">warn</option>
+          <option value="kick">kick</option>
           <option value="ban">ban</option>
         </select>
       </div>
       <div>
         <label>
           Time in <br />
-          seconds(0 is permanent)
+          minutes (0 is permanent)
         </label>
         <input
           type="number"
