@@ -1,8 +1,8 @@
 import { useParams } from "react-router-dom";
 import axios from "../../../axios";
 import { useEffect, useState } from "react";
-import PersonalBot from "../../../components/PersonalBot";
-import PersonalBotLogin from "../../../components/PersonalBotLogin";
+import PersonalBot from "./personal-bot/PersonalBot";
+import PersonalBotLogin from "./personal-bot/PersonalBotLogin";
 
 function ProtectedBot() {
   const { id } = useParams();

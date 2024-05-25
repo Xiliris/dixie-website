@@ -1,0 +1,114 @@
+@import "../../../../global/mixins.scss", "../../../../global/colors.scss";
+
+.personal-bot {
+  @include excludeDefault;
+  padding: 0;
+  display: flex;
+  align-items: flex-start;
+  .personal-bot-content {
+    @include dashContent;
+
+    .title {
+      @include flex();
+      width: 100%;
+      color: $primary-emphasis;
+    }
+
+    .bot-preview {
+      @include flex($direction: column);
+      background-color: $backgroud-emphasis;
+      padding: 20px;
+      border-radius: 12px;
+      width: 100%;
+
+      form {
+        @include flex($justify: flex-start, $align: flex-start);
+        gap: 20px;
+        width: 100%;
+
+        img {
+          width: 100px;
+          height: 100px;
+          border-radius: 50%;
+          cursor: pointer;
+        }
+
+        input[type="file"] {
+          display: none;
+        }
+
+        .main-container {
+          display: flex;
+          flex-direction: column;
+          gap: 20px;
+          width: 100%;
+
+          div {
+            @include flex(
+              $justify: flex-start,
+              $align: flex-start,
+              $direction: column
+            );
+
+            label {
+              color: $primary;
+              font-size: 1em;
+            }
+            input {
+              background-color: $backgroud;
+              border: 1px solid $backgroud;
+              border-radius: 5px;
+              padding: 10px 15px;
+              width: 100%;
+              font-size: 1.1em;
+            }
+
+            select {
+              background-color: $backgroud;
+              border: 1px solid $backgroud;
+              border-radius: 5px;
+              padding: 10px 15px;
+              width: 100%;
+              font-size: 1.1em;
+              width: 100%;
+              -moz-appearance: none;
+              -webkit-appearance: none;
+              appearance: none;
+
+              &:focus {
+                outline: none;
+              }
+            }
+          }
+
+          .inline-div {
+            @include flex(
+              $justify: flex-start,
+              $align: center,
+              $direction: row
+            );
+            width: 100%;
+            gap: 20px;
+          }
+
+          .btn-div {
+            width: 100%;
+            @include flex(
+              $justify: flex-end,
+              $align: flex-end,
+              $direction: row
+            );
+            gap: 20px;
+
+            button {
+              @include primaryButton;
+              padding: 5px 20px;
+              border-radius: 5px;
+              font-size: 1em;
+            }
+          }
+        }
+      }
+    }
+  }
+}

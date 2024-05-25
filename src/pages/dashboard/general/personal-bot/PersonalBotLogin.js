@@ -1,9 +1,9 @@
 import "./PersonalBotLogin.scss";
-import Navbar from "./Navbar";
-import Header from "./Header";
+import Navbar from "../../../../components/Navbar";
+import Header from "../../../../components/Header";
 import { useParams } from "react-router-dom";
 import { useState } from "react";
-import axios from "../axios";
+import axios from "../../../../axios";
 
 function PersonalBotLogin() {
   const { id } = useParams();
