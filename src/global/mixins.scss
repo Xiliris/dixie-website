@@ -10,9 +10,34 @@ $desktop: 1100px;
   margin: 0 auto;
 }
 
+@mixin excludeDefault {
+  padding: 18px 30px;
+  margin: 0 auto;
+  max-width: none;
+}
+
 @mixin dashDefault {
   @include default;
   margin: 70px auto;
+}
+
+@mixin dashContent {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow-y: scroll;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  width: 100%;
+  gap: 20px;
+}
+
+@mixin flex($justify: center, $align: center, $direction: row) {
+  display: flex;
+  justify-content: $justify;
+  align-items: $align;
+  flex-direction: $direction;
 }
 
 @mixin title {

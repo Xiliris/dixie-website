@@ -20,8 +20,6 @@ function Login() {
       } else {
         navigate("/error401");
       }
-
-      console.log(data, status);
     }
 
     login();

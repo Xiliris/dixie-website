@@ -100,7 +100,7 @@ function ChatManagment() {
 
   return (
     <>
-      <Navbar />
+      <Navbar navType="nav-dashboard" />
       <Header title="Chat Managment" />
       <main className="chat-managment">
         <Sidebar />

@@ -1,6 +1,6 @@
 {
-  "redirect_url": "https://discord.com/oauth2/authorize?client_id=902824536460918826&response_type=code&redirect_uri=https%3A%2F%2Fdixiebot.com%2Flogin&scope=identify+guilds+email+guilds.join",
-  "invite_url": "https://discord.com/api/oauth2/authorize?client_id=902824536460918826&permissions=8&scope=bot%20applications.commands",
+  "redirect_url": "https://discord.com/oauth2/authorize?client_id=1240361785740234774&response_type=code&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Flogin&scope=identify+guilds+guilds.join+email",
+  "invite_url": "https://discord.com/api/oauth2/authorize?client_id=1240361785740234774&permissions=8&scope=bot%20applications.commands",
   "support_url": "https://discord.gg/AFMg8GZkfS",
-  "baseUrl": "https://dixie-server.onrender.com"
+  "baseUrl": "http://localhost:8080"
 }

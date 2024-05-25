@@ -15,6 +15,13 @@ a {
   text-decoration: none;
 }
 
+a,
+a:visited,
+a:hover,
+a:active {
+  color: inherit;
+}
+
 * {
   margin: 0;
   font-family: "IBM Plex Mono", monospace;

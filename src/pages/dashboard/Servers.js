@@ -2,9 +2,9 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import config from "../../config.json";
 import userGuilds from "../../modules/userGuilds";
 import itemAnimation from "../../animations/itemAnimation";
+import grayLogo from "../../imgs/gray-logo.png";
 
 import Navbar from "../../components/Navbar";
 import Header from "../../components/Header";
@@ -59,7 +59,11 @@ function ServerItem({ server, index }) {
     >
       <div>
         <img
-          src={`https://cdn.discordapp.com/icons/${server.id}/${server.icon}`}
+          src={
+            server.icon
+              ? `https://cdn.discordapp.com/icons/${server.id}/${server.icon}`
+              : grayLogo
+          }
           alt={server.name}
         />
         <h3>{server.name}</h3>
