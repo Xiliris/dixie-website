@@ -17,8 +17,7 @@ $desktop: 1100px;
 }
 
 @mixin dashDefault {
-  @include default;
-  margin: 70px auto;
+  margin: 120px auto;
 }
 
 @mixin dashContent {
@@ -28,7 +27,7 @@ $desktop: 1100px;
   overflow-y: scroll;
   justify-content: space-between;
   align-items: center;
-  padding: 20px;
+  padding: 40px 100px;
   width: 100%;
   gap: 20px;
 }
