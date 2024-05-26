@@ -56,6 +56,12 @@ function Sidebar() {
               Chat Managment
             </li>
           </Link>
+          <Link to={`/dashboard/${id}/welcome-message`}>
+            <li>
+              <span class="material-symbols-outlined">waving_hand</span>
+              Welcome & Goodbye
+            </li>
+          </Link>
         </ul>
       </div>
     </aside>

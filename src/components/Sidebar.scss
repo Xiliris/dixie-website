@@ -41,12 +41,19 @@
 
     ul {
       padding: 0 20px;
+      @include flex(
+        $justify: flex-start,
+        $align: flex-start,
+        $direction: column
+      );
+      gap: 10px;
+
       li {
         color: $secondary;
         display: flex;
         justify-content: flex-start;
         align-items: center;
-        gap: 5px;
+        gap: 10px;
         transition: color 0.1s ease-in-out;
 
         i {

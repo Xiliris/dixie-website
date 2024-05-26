@@ -1,0 +1,68 @@
+@import "../../../global/colors.scss", "../../../global/mixins.scss";
+
+.welcome-goodbye {
+  @include excludeDefault;
+  padding: 0;
+  display: flex;
+  align-items: flex-start;
+
+  .welcome-goodbye-content {
+    @include dashContent;
+
+    .title {
+      @include flex();
+      width: 100%;
+      color: $primary-emphasis;
+      font-size: 2em;
+      text-transform: uppercase;
+    }
+
+    form {
+      @include flex(
+        $justify: flex-start,
+        $align: flex-start,
+        $direction: column
+      );
+      gap: 50px;
+
+      article {
+        padding: 20px;
+        border-radius: 12px;
+        border: 1px solid $backgroud;
+
+        background: $backgroud-emphasis;
+        textarea {
+          resize: none;
+          padding: 10px;
+          background-color: $backgroud;
+          border: 1px solid $backgroud;
+          border-radius: 5px;
+          padding: 10px 15px;
+          width: 100%;
+          font-size: 1.1em;
+        }
+
+        div {
+          margin-top: 20px;
+          @include flex($justify: flex-end, $align: flex-end);
+
+          button {
+            @include primaryButton;
+            padding: 5px 20px;
+            border-radius: 5px;
+            font-size: 1em;
+          }
+        }
+      }
+
+      .welcome-image {
+        canvas {
+          width: 500px;
+          height: 250px;
+          border: 2px solid white;
+          border-radius: 12px;
+        }
+      }
+    }
+  }
+}
