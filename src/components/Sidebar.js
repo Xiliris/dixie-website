@@ -63,6 +63,19 @@ function Sidebar() {
         </Link>
       </li>
     </ul>
+          <Link to={`/dashboard/${id}/chat-managment`}>
+            <li>
+              <span class="material-symbols-outlined">chat</span>
+              Chat Managment
+            </li>
+          </Link>
+          <Link to={`/dashboard/${id}/welcome-message`}>
+            <li>
+              <span class="material-symbols-outlined">waving_hand</span>
+              Welcome & Goodbye
+            </li>
+          </Link>
+        </ul>
       </div>
     </aside>
   );
