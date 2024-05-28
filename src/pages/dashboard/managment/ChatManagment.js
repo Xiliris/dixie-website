@@ -101,7 +101,7 @@ function ChatManagment() {
   return (
     <>
       <Navbar navType="nav-dashboard" />
-      <Header title="Chat Managment" />
+      <Header title="Chat Management" />
       <main className="chat-managment">
         <Sidebar />
         <main>
@@ -123,7 +123,7 @@ function ChatManagment() {
   );
 }
 
-function ItemSection({ title, data, onChange, guildChannels }) {
+function ItemSection({ title, data, onChange }) {
   return (
     <article>
       <div>

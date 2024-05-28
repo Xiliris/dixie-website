@@ -17,6 +17,7 @@ import ProtectedAuth from "./pages/auth/ProtectedAuth";
 import ProtectedPermissions from "./pages/auth/ProtectedPermissions";
 import PersonalBot from "./pages/dashboard/general/PersonalBot";
 import ChatManagment from "./pages/dashboard/managment/ChatManagment";
+import Administration from "./pages/dashboard/managment/Administration";
 import WelcomeGoodbye from "./pages/dashboard/managment/WelcomeGoodbye";
 
 function App() {
@@ -61,6 +62,16 @@ function App() {
             <ProtectedAuth>
               <ProtectedPermissions>
                 <ChatManagment />
+              </ProtectedPermissions>
+            </ProtectedAuth>
+          }
+        />
+        <Route
+          path="/dashboard/:id/administration"
+          element={
+            <ProtectedAuth>
+              <ProtectedPermissions>
+                <Administration />
               </ProtectedPermissions>
             </ProtectedAuth>
           }
