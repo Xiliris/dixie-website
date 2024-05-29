@@ -8,19 +8,24 @@ import Header from "../../../components/Header";
 
 function Administration() {
   const { id } = useParams();
-  const [infractions, setInfractions] = useState([
-    { numInfractions: 0, punishmentType: "none", time: 0 },
-  ]);
+
+  const [infractions, setInfractions] = useState([]);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    axios
-      .get(`/dashboard/administration/${id}`)
-      .then((response) => {
-        setInfractions(response.data || []);
-      })
-      .catch((error) => {
-        console.error("Error fetching infractions:", error);
-      });
+    async function fetchInfractions() {
+      try {
+        const response = await axios.get(
+          `/dashboard/managment/administration/${id}`
+        );
+        const data = response.data.warnings;
+        setInfractions(data);
+      } catch (error) {
+        setError(error.message);
+      }
+    }
+
+    fetchInfractions();
   }, [id]);
 
   const handleChange = (index, key, value) => {
@@ -37,20 +42,18 @@ function Administration() {
     ]);
   };
 
-  const handleItemSubmit = (index) => {
+  const handleItemSubmit = async (index, setResponseMessage) => {
     const requestData = { infractions: infractions[index] };
-    console.log("Submitting data for item", index, "with ID:", id);
-    axios
-      .post(`/dashboard/administration/${id}`, requestData)
-      .then((response) => {
-        console.log(
-          `Data for item ${index} saved successfully:`,
-          response.data
-        );
-      })
-      .catch((error) => {
-        console.error(`Error saving data for item ${index}:`, error);
-      });
+
+    try {
+      const response = await axios.post(
+        `/dashboard/managment/administration/${id}`,
+        requestData
+      );
+      setResponseMessage(`${response.data.message}`);
+    } catch (error) {
+      setResponseMessage(`${error.message}`);
+    }
   };
 
   return (
@@ -60,6 +63,7 @@ function Administration() {
       <main className="chat-managment">
         <Sidebar />
         <main>
+          {error && <p className="error-message">{error}</p>}
           <button
             type="button"
             onClick={handleAddItem}
@@ -74,7 +78,7 @@ function Administration() {
               index={index}
               data={item}
               onChange={handleChange}
-              onItemSubmit={() => handleItemSubmit(index)}
+              onItemSubmit={handleItemSubmit}
             />
           ))}
         </main>
@@ -84,6 +88,8 @@ function Administration() {
 }
 
 function ItemSection({ index, data, onChange, onItemSubmit }) {
+  const [responseMessage, setResponseMessage] = useState("");
+
   return (
     <article className="infractions-card">
       <div>
@@ -92,6 +98,7 @@ function ItemSection({ index, data, onChange, onItemSubmit }) {
           <label>Number of Infractions</label>
           <input
             type="number"
+            min="0"
             value={data.numInfractions}
             onChange={(e) => onChange(index, "numInfractions", e.target.value)}
           />
@@ -116,6 +123,7 @@ function ItemSection({ index, data, onChange, onItemSubmit }) {
             </label>
             <input
               type="number"
+              min="0"
               value={data.time}
               onChange={(e) => onChange(index, "time", e.target.value)}
             />
@@ -124,11 +132,12 @@ function ItemSection({ index, data, onChange, onItemSubmit }) {
       </div>
       <button
         type="submit"
-        onClick={onItemSubmit}
-        style={{ marginTop: "20px" }}
+        onClick={() => onItemSubmit(index, setResponseMessage)}
+        style={{ marginTop: "20px", marginBottom: "20px" }}
       >
         Submit
       </button>
+      {responseMessage && <p className="response-message">{responseMessage}</p>}
     </article>
   );
 }
