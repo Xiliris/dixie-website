@@ -14,6 +14,7 @@ function Navbar({ navType }) {
       const user = await getUserData();
 
       if (user) {
+        console.log(user);
         setUser(user);
       }
     }
@@ -60,7 +61,7 @@ function UserComponent({ id, avatar }) {
           expand_more
         </span>
         <img
-          src={`https://cdn.discordapp.com/avatars/${id}/${avatar}`}
+          src={`https://cdn.discordapp.com/avatars/${id}/${avatar}.webp?size=512`}
           alt="User avatar"
         />
       </div>
