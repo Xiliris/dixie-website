@@ -43,32 +43,40 @@ function Sidebar() {
       <div>
         <h5>Managment</h5>
         <ul>
-      <li>
-        <Link to={`/dashboard/${id}/chat-managment`}>
-          <span className="material-symbols-outlined">chat</span>
-          Chat Management
-        </Link>
-      </li>
-      <li>
-        <Link to={`/dashboard/${id}/administration`}>
-          <span className="material-symbols-outlined">admin_panel_settings</span>
-          Administration
-        </Link>
-      </li>
-    </ul>
-          <Link to={`/dashboard/${id}/chat-managment`}>
-            <li>
-              <span class="material-symbols-outlined">chat</span>
-              Chat Managment
-            </li>
-          </Link>
-          <Link to={`/dashboard/${id}/welcome-message`}>
-            <li>
-              <span class="material-symbols-outlined">waving_hand</span>
-              Welcome & Goodbye
-            </li>
-          </Link>
+          <li>
+            <Link to={`/dashboard/${id}/chat-managment`}>
+              <span className="material-symbols-outlined">chat</span>
+              Chat Management
+            </Link>
+          </li>
+          <li>
+            <Link to={`/dashboard/${id}/administration`}>
+              <span className="material-symbols-outlined">
+                admin_panel_settings
+              </span>
+              Administration
+            </Link>
+          </li>
         </ul>
+        <Link to={`/dashboard/${id}/chat-managment`}>
+          <li>
+            <span class="material-symbols-outlined">chat</span>
+            Chat Managment
+          </li>
+        </Link>
+        <Link to={`/dashboard/${id}/welcome-message`}>
+          <li>
+            <span class="material-symbols-outlined">waving_hand</span>
+            Welcome & Goodbye
+          </li>
+        </Link>
+
+        <Link to={`/dashboard/${id}/moderation`}>
+          <li>
+            <span class="material-symbols-outlined">security</span>
+            Moderation
+          </li>
+        </Link>
       </div>
     </aside>
   );
