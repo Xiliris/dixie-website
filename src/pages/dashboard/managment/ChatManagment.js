@@ -66,8 +66,11 @@ function ChatManagment() {
     axios
       .get(`/dashboard/managment/chat/${id}`)
       .then((response) => {
-        setSections(response.data.chat);
-        setGuildChannels(response.data.channels);
+        const responseData = response.data;
+        if (responseData && responseData.chat) {
+          setSections(responseData.chat);
+          setGuildChannels(responseData.channels);
+        }
       })
       .catch((error) => {
         console.log(error);

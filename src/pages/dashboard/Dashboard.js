@@ -1,6 +1,8 @@
+import React from "react";
 import Header from "../../components/Header";
 import Navbar from "../../components/Navbar";
 import Sidebar from "../../components/Sidebar";
+import CustomDropdown from "../../components/CustomDropdown";
 
 import "./Dashboard.scss";
 
@@ -15,6 +17,7 @@ function Dashboard() {
         <section className="dashboard-content">
           <h1>Dashboard</h1>
           <p>Welcome to the dashboard</p>
+          <CustomDropdown />
         </section>
       </main>
     </>

@@ -69,6 +69,13 @@ function Sidebar() {
               Welcome & Goodbye
             </li>
           </Link>
+
+          <Link to={`/dashboard/${id}/moderation`}>
+            <li>
+              <span class="material-symbols-outlined">security</span>
+              Moderation
+            </li>
+          </Link>
         </ul>
       </div>
     </aside>
