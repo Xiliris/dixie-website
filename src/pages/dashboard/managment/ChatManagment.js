@@ -66,8 +66,11 @@ function ChatManagment() {
     axios
       .get(`/dashboard/managment/chat/${id}`)
       .then((response) => {
-        setSections(response.data.chat);
-        setGuildChannels(response.data.channels);
+        const responseData = response.data;
+        if (responseData && responseData.chat) {
+          setSections(responseData.chat);
+          setGuildChannels(responseData.channels);
+        }
       })
       .catch((error) => {
         console.log(error);
@@ -101,7 +104,7 @@ function ChatManagment() {
   return (
     <>
       <Navbar navType="nav-dashboard" />
-      <Header title="Chat Managment" />
+      <Header title="Chat Management" />
       <main className="chat-managment">
         <Sidebar />
         <main>
@@ -123,7 +126,7 @@ function ChatManagment() {
   );
 }
 
-function ItemSection({ title, data, onChange, guildChannels }) {
+function ItemSection({ title, data, onChange }) {
   return (
     <article>
       <div>

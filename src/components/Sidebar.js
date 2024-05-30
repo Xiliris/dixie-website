@@ -38,18 +38,24 @@ function Sidebar() {
       </div>
       <div>
         <h5>General</h5>
-        <ul>
-          <Link to={`/dashboard/${id}/personal-bot`}>
-            <li>
-              <span className="material-symbols-outlined">terminal</span>{" "}
-              Personal BOT
-            </li>
-          </Link>
-        </ul>
+        <ul></ul>
       </div>
       <div>
         <h5>Managment</h5>
         <ul>
+      <li>
+        <Link to={`/dashboard/${id}/chat-managment`}>
+          <span className="material-symbols-outlined">chat</span>
+          Chat Management
+        </Link>
+      </li>
+      <li>
+        <Link to={`/dashboard/${id}/administration`}>
+          <span className="material-symbols-outlined">admin_panel_settings</span>
+          Administration
+        </Link>
+      </li>
+    </ul>
           <Link to={`/dashboard/${id}/chat-managment`}>
             <li>
               <span class="material-symbols-outlined">chat</span>
