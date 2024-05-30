@@ -1,0 +1,111 @@
+@import '../global/colors.scss';
+@import '../global/mixins.scss';
+
+.custom-dropdown-wrapper {
+  display: flex;
+  gap: 1.25rem;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  flex-direction: column;
+
+  .custom-dropdown-selected {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+
+      .selected-channels {
+        @include textInput;
+        height: 150px;
+        overflow-y: scroll;
+      }
+    }
+  }
+
+  .custom-dropdown-options {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    .custom-dropdown-header {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+
+      h3 {
+        color: $primary;
+      }
+
+      span {
+        color: $primary;
+
+        icon.fa.fa-info-circle {
+          color: $primary;
+          font-size: 1.5rem;
+        }
+      }
+
+      span icon.fa-info-circle:hover {
+        cursor: pointer;
+        color: $hover;
+
+      }
+
+      p {
+        color: $primary;
+        font: 0.8rem sans-serif;
+      }
+
+      strong {
+        color: $primary;
+      }
+    }
+
+    .dropdown-options {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+
+      h4 {
+        color: $primary;
+      }
+
+      .channel-select {
+        @include textInput;
+        height: 150px;
+        overflow-y: scroll;
+      }
+    }
+
+    .custom-dropdown-footer {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+
+      button {
+        width: 100%;
+      }
+
+      &:hover {
+        cursor: pointer;
+        transform: scale(1.1);
+        color: $hover;
+      }
+    }
+  }
+}
