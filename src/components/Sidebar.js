@@ -16,7 +16,6 @@ function Sidebar() {
         .catch((err) => {
           navigate("/error/401");
         });
-      console.log(response.data);
       setGuild(response.data);
     }
 
@@ -44,7 +43,7 @@ function Sidebar() {
         <h5>Managment</h5>
         <ul>
           <li>
-            <Link to={`/dashboard/${id}/chat-managment`}>
+            <Link to={`/dashboard/${id}/chat-management`}>
               <span className="material-symbols-outlined">chat</span>
               Chat Management
             </Link>

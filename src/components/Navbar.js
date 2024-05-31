@@ -14,7 +14,6 @@ function Navbar({ navType }) {
       const user = await getUserData();
 
       if (user) {
-        console.log(user);
         setUser(user);
       }
     }

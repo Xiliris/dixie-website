@@ -46,7 +46,7 @@ function App() {
           }
         />
         <Route
-          path="/dashboard/:id/chat-managment"
+          path="/dashboard/:id/chat-management"
           element={
             <ProtectedAuth>
               <ProtectedPermissions>

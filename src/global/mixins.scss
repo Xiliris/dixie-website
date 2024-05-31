@@ -27,9 +27,10 @@ $desktop: 1100px;
   overflow-y: scroll;
   justify-content: space-between;
   align-items: center;
-  padding: 40px 100px;
+  padding: 40px 50px;
   width: 100%;
   gap: 20px;
+  overflow-y: auto;
 }
 
 @mixin flex($justify: center, $align: center, $direction: row) {
@@ -84,5 +85,11 @@ $desktop: 1100px;
   }
   &:active {
     border: 1px solid $primary-emphasis;
+  }
+}
+
+@mixin disableScroll {
+  ::-webkit-scrollbar {
+    width: 0;
   }
 }

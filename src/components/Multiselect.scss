@@ -1,81 +1,42 @@
 @import "../global/colors.scss", "../global/mixins.scss";
 
 .multi-select {
-  width: 100%;
-  .selected-values {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 5px;
-    background-color: $backgroud-emphasis;
-    border-radius: 8px;
+  .select__control--is-focused {
+    border: 1px solid $secondary !important;
+    box-shadow: none;
+  }
 
-    span {
-      color: $primary;
-      cursor: pointer;
-      transition: transform 0.2s ease-in-out;
+  .select__control--menu-is-open {
+    border: 1px solid $primary-emphasis !important;
+    box-shadow: none;
+  }
+
+  .select__control {
+    background-color: transparent;
+    border: 1px solid $secondary;
+    cursor: pointer;
+    &:hover {
+      border: 1px solid $secondary;
     }
 
-    ul {
+    .select__value-container {
+    }
+  }
+
+  .select__menu {
+    .select__menu-list {
       display: flex;
-      flex-wrap: wrap;
-      justify-content: flex-start;
-      align-items: center;
-      gap: 5px;
-      list-style: none;
-      padding: 0;
-      li {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 5px;
-        margin-bottom: 5px;
-        gap: 7px;
-        background-color: $backgroud;
-        border-radius: 8px;
-        color: $secondary;
-
-        button {
-          background-color: transparent;
-          font-size: 1.5em;
-          color: white;
-          border: none;
-          padding: 0;
-          margin: 0;
-
-          cursor: pointer;
+      flex-direction: column;
+      width: 100%;
+      background-color: $secondary;
+      .select__option {
+        width: 100%;
+        cursor: pointer;
+        padding: 10px;
+        &:hover {
+          background-color: $primary;
         }
       }
-    }
-  }
-  .hidden {
-    height: 0;
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-
-  .dropdown {
-    list-style: none;
-    padding: 0;
-    margin-top: 10px;
-    background-color: $backgroud-emphasis;
-    border-radius: 8px;
-    padding: 5px;
-    overflow: hidden;
-
-    transition: transform 0.2s ease-in-out, opacity 0.1s ease-in;
-
-    li {
-      padding: 5px 10px;
-      margin-bottom: 5px;
-      cursor: pointer;
-      border-radius: 8px;
-      color: $secondary;
-      transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
-    }
-    li:hover {
-      background-color: $backgroud;
-      color: $primary;
     }
   }
 }

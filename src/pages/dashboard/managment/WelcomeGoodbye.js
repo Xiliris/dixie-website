@@ -36,7 +36,7 @@ function WelcomeGoodbye() {
   useEffect(() => {
     async function getWelcomeGoodbye() {
       const response = await axios
-        .get(`/dashboard/managment/welcome-goodbye/${id}`)
+        .get(`/dashboard/management/welcome-goodbye/${id}`)
         .catch((err) => {
           navigate("/error/401");
         });
@@ -66,7 +66,7 @@ function WelcomeGoodbye() {
     if (welcomeMessageText.length > 250) return;
 
     await axios
-      .post(`/dashboard/managment/welcome-goodbye/${id}`, {
+      .post(`/dashboard/management/welcome-goodbye/${id}`, {
         welcomeMessage,
         welcomeImage,
         goodbyeMessage,

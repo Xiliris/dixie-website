@@ -1,75 +1,27 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import axios from "../../../axios";
 import { useParams } from "react-router-dom";
 import "./ChatManagment.scss";
 import Navbar from "../../../components/Navbar";
 import Sidebar from "../../../components/Sidebar";
 import Header from "../../../components/Header";
+import Multiselect from "../../../components/Multiselect";
 
 function ChatManagment() {
   const { id } = useParams();
-  const [sections, setSections] = useState({
-    LINKS: {
-      enabled: false,
-      punish: "none",
-      time: 0,
-      allowedChannels: [],
-      allowedRoles: [],
-    },
-    SPAM: {
-      enabled: false,
-      punish: "none",
-      time: 0,
-      allowedChannels: [],
-      allowedRoles: [],
-    },
-    BAD_WORDS: {
-      enabled: false,
-      punish: "none",
-      time: 0,
-      allowedChannels: [],
-      allowedRoles: [],
-    },
-    REPEATED_MESSAGES: {
-      enabled: false,
-      punish: "none",
-      time: 0,
-      allowedChannels: [],
-      allowedRoles: [],
-    },
-    DISCORD_INVITES: {
-      enabled: false,
-      punish: "none",
-      time: 0,
-      allowedChannels: [],
-      allowedRoles: [],
-    },
-    CAPS: {
-      enabled: false,
-      punish: "none",
-      time: 0,
-      allowedChannels: [],
-      allowedRoles: [],
-    },
-    MASS_MENTION: {
-      enabled: false,
-      punish: "none",
-      time: 0,
-      allowedChannels: [],
-      allowedRoles: [],
-    },
-  });
-
+  const [sections, setSections] = useState({});
   const [guildChannels, setGuildChannels] = useState([]);
+  const [guildRoles, setGuildRoles] = useState([]);
 
   useEffect(() => {
     axios
-      .get(`/dashboard/managment/chat/${id}`)
+      .get(`/dashboard/management/chat/${id}`)
       .then((response) => {
         const responseData = response.data;
         if (responseData && responseData.chat) {
           setSections(responseData.chat);
           setGuildChannels(responseData.channels);
+          setGuildRoles(responseData.roles);
         }
       })
       .catch((error) => {
@@ -77,7 +29,7 @@ function ChatManagment() {
       });
   }, [id]);
 
-  const handleChange = (section, key, value) => {
+  const handleChange = useCallback((section, key, value) => {
     setSections((prevState) => ({
       ...prevState,
       [section]: {
@@ -85,14 +37,34 @@ function ChatManagment() {
         [key]: value,
       },
     }));
-  };
+  }, []);
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const requestData = { chatManagment: { ...sections } };
+    const requestData = {
+      chatManagement: {
+        ...sections,
+        ...Object.keys(sections).reduce((acc, section) => {
+          acc[section] = {
+            ...sections[section],
+            disabledChannels: sections[section].disabledChannels.map(
+              (channel) => ({
+                id: channel.value,
+                name: channel.label,
+              })
+            ),
+            allowedRoles: sections[section].allowedRoles.map((role) => ({
+              id: role.value,
+              name: role.label,
+            })),
+          };
+          return acc;
+        }, {}),
+      },
+    };
 
     axios
-      .post(`/dashboard/managment/chat/${id}`, requestData)
+      .post(`/dashboard/management/chat/${id}`, requestData)
       .then((response) => {
         console.log("Data saved successfully:", response.data);
       })
@@ -107,26 +79,37 @@ function ChatManagment() {
       <Header title="Chat Management" />
       <main className="chat-managment">
         <Sidebar />
-        <main>
+        <section>
           <form onSubmit={handleSubmit}>
-            {Object.keys(sections).map((section) => (
-              <ItemSection
-                key={section}
-                title={section}
-                data={sections[section]}
-                guildChannels={guildChannels}
-                onChange={handleChange}
-              />
-            ))}
+            <div className="item-container">
+              {Object.keys(sections).map((section) => (
+                <ItemSection
+                  key={section}
+                  title={section}
+                  data={sections[section]}
+                  guildChannels={guildChannels}
+                  guildRoles={guildRoles}
+                  onChange={handleChange}
+                />
+              ))}
+            </div>
             <button type="submit">Submit</button>
           </form>
-        </main>
+        </section>
       </main>
     </>
   );
 }
 
-function ItemSection({ title, data, onChange }) {
+const ItemSection = ({ title, data, guildChannels, guildRoles, onChange }) => {
+  const handleChannelsChange = (name, selectedOptions) => {
+    onChange(title, "disabledChannels", selectedOptions);
+  };
+
+  const handleRolesChange = (name, selectedOptions) => {
+    onChange(title, "allowedRoles", selectedOptions);
+  };
+
   return (
     <article>
       <div>
@@ -162,8 +145,32 @@ function ItemSection({ title, data, onChange }) {
           onChange={(e) => onChange(title, "time", e.target.value)}
         />
       </div>
+      <Multiselect
+        name="Allowed Channels"
+        options={guildChannels.map((channel) => ({
+          value: channel.id,
+          label: channel.name,
+        }))}
+        selectedOptions={(data.disabledChannels || []).map((channel) => ({
+          value: channel.id,
+          label: channel.name,
+        }))}
+        onChange={handleChannelsChange}
+      />
+      <Multiselect
+        name="Allowed Roles"
+        options={guildRoles.map((role) => ({
+          value: role.id,
+          label: role.name,
+        }))}
+        selectedOptions={(data.allowedRoles || []).map((role) => ({
+          value: role.id,
+          label: role.name,
+        }))}
+        onChange={handleRolesChange}
+      />
     </article>
   );
-}
+};
 
 export default ChatManagment;
