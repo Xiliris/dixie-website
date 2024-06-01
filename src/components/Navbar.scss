@@ -78,6 +78,7 @@ nav {
     overflow: hidden;
     transition: transform 0.2s ease-in-out, opacity 0.1s ease-in;
     min-width: 200px;
+    z-index: 100;
 
     hr {
       width: 100%;

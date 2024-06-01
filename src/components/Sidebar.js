@@ -42,20 +42,20 @@ function Sidebar() {
       <div>
         <h5>Managment</h5>
         <ul>
-          <li>
-            <Link to={`/dashboard/${id}/chat-management`}>
+          <Link to={`/dashboard/${id}/chat-management`}>
+            <li>
               <span className="material-symbols-outlined">chat</span>
               Chat Management
-            </Link>
-          </li>
-          <li>
-            <Link to={`/dashboard/${id}/administration`}>
+            </li>
+          </Link>
+          <Link to={`/dashboard/${id}/administration`}>
+            <li>
               <span className="material-symbols-outlined">
                 admin_panel_settings
               </span>
               Administration
-            </Link>
-          </li>
+            </li>
+          </Link>
           <Link to={`/dashboard/${id}/welcome-message`}>
             <li>
               <span class="material-symbols-outlined">waving_hand</span>
