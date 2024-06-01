@@ -2,9 +2,8 @@ import React, { useState, useEffect, useCallback } from "react";
 import axios from "../../../axios";
 import { useParams } from "react-router-dom";
 import "./ChatManagment.scss";
-import Navbar from "../../../components/Navbar";
-import Sidebar from "../../../components/Sidebar";
-import Header from "../../../components/Header";
+import Title from "../../../components/Title";
+import LayoutContainer from "../../../components/LayoutContainer";
 import Multiselect from "../../../components/Multiselect";
 
 function ChatManagment() {
@@ -29,7 +28,7 @@ function ChatManagment() {
       });
   }, [id]);
 
-  const handleChange = useCallback((section, key, value) => {
+  const handleChange = async (section, key, value) => {
     setSections((prevState) => ({
       ...prevState,
       [section]: {
@@ -37,30 +36,31 @@ function ChatManagment() {
         [key]: value,
       },
     }));
-  }, []);
+  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    const transformedSections = Object.keys(sections).reduce((acc, section) => {
+      acc[section] = {
+        ...sections[section],
+        disabledChannels: sections[section].disabledChannels
+          ? sections[section].disabledChannels.map((channel) => ({
+              id: channel.value ? channel.value : channel.id,
+              name: channel.label ? channel.label : channel.name,
+            }))
+          : [],
+        allowedRoles: sections[section].allowedRoles
+          ? sections[section].allowedRoles.map((role) => ({
+              id: role.value ? role.value : role.id,
+              name: role.label ? role.label : role.name,
+            }))
+          : [],
+      };
+      return acc;
+    }, {});
+
     const requestData = {
-      chatManagement: {
-        ...sections,
-        ...Object.keys(sections).reduce((acc, section) => {
-          acc[section] = {
-            ...sections[section],
-            disabledChannels: sections[section].disabledChannels.map(
-              (channel) => ({
-                id: channel.value,
-                name: channel.label,
-              })
-            ),
-            allowedRoles: sections[section].allowedRoles.map((role) => ({
-              id: role.value,
-              name: role.label,
-            })),
-          };
-          return acc;
-        }, {}),
-      },
+      chatManagement: transformedSections,
     };
 
     axios
@@ -75,34 +75,29 @@ function ChatManagment() {
 
   return (
     <>
-      <Navbar navType="nav-dashboard" />
-      <Header title="Chat Management" />
-      <main className="chat-managment">
-        <Sidebar />
-        <section>
-          <form onSubmit={handleSubmit}>
-            <div className="item-container">
-              {Object.keys(sections).map((section) => (
-                <ItemSection
-                  key={section}
-                  title={section}
-                  data={sections[section]}
-                  guildChannels={guildChannels}
-                  guildRoles={guildRoles}
-                  onChange={handleChange}
-                />
-              ))}
-            </div>
-            <button type="submit">Submit</button>
-          </form>
-        </section>
-      </main>
+      <LayoutContainer handleSubmit={handleSubmit} headTitle="Chat Management">
+        <Title>Chat Management</Title>
+        <div className="item-container">
+          {Object.keys(sections).map((section) => (
+            <ItemSection
+              key={section}
+              title={section}
+              data={sections[section]}
+              guildChannels={guildChannels}
+              guildRoles={guildRoles}
+              onChange={handleChange}
+            />
+          ))}
+        </div>
+        <button type="submit">Submit</button>
+      </LayoutContainer>
     </>
   );
 }
 
 const ItemSection = ({ title, data, guildChannels, guildRoles, onChange }) => {
   const handleChannelsChange = (name, selectedOptions) => {
+    console.log("selectedOptions", selectedOptions);
     onChange(title, "disabledChannels", selectedOptions);
   };
 
@@ -146,7 +141,7 @@ const ItemSection = ({ title, data, guildChannels, guildRoles, onChange }) => {
         />
       </div>
       <Multiselect
-        name="Allowed Channels"
+        name="Disabled Channels"
         options={guildChannels.map((channel) => ({
           value: channel.id,
           label: channel.name,
