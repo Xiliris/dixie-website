@@ -5,7 +5,7 @@ import Header from "../../components/Header";
 import getUserData from "../../modules/userData";
 
 function Profile() {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState({});
 
   console.log(user);
 
