@@ -1,0 +1,18 @@
+@import "../global/colors.scss", "../global/mixins.scss";
+
+.text-input {
+  width: 100%;
+  label {
+    color: $primary;
+    font-size: 1em;
+    margin-left: 10px;
+  }
+  input {
+    background-color: $backgroud;
+    border: 1px solid $backgroud;
+    border-radius: 5px;
+    padding: 10px 15px;
+    width: 100%;
+    font-size: 1.1em;
+  }
+}

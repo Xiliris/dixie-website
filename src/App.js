@@ -14,6 +14,7 @@ import Error403 from "./pages/errors/Error403";
 import Error404 from "./pages/errors/Error404";
 
 import Profile from "./pages/profile/Profile";
+import PersonalBotLogin from "./pages/profile/personal-bot/PersonalBotLogin";
 
 import ProtectedAuth from "./pages/auth/ProtectedAuth";
 import ProtectedPermissions from "./pages/auth/ProtectedPermissions";
@@ -34,6 +35,15 @@ function App() {
           element={
             <ProtectedAuth>
               <Profile />
+            </ProtectedAuth>
+          }
+        />
+
+        <Route
+          path="/profile/personal-bot/login"
+          element={
+            <ProtectedAuth>
+              <PersonalBotLogin />
             </ProtectedAuth>
           }
         />
