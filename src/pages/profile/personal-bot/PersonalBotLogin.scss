@@ -1,0 +1,66 @@
+@import "../../../global/mixins.scss", "../../../global/colors.scss";
+
+.personal-bot-login {
+  @include default;
+
+  section {
+    margin-top: 40px;
+    h2 {
+      color: $primary;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+    form {
+      display: flex;
+      justify-content: flex-start;
+      align-items: flex-start;
+      flex-direction: column;
+
+      label {
+        color: $primary;
+        font-size: 1.2em;
+        span {
+          color: $danger;
+        }
+      }
+
+      input {
+        @include textInput;
+        width: 100%;
+        margin-top: 10px;
+        font-size: 1em;
+      }
+
+      button {
+        margin-left: auto;
+        margin-top: 20px;
+      }
+    }
+  }
+
+  .how-to {
+    margin-top: 50px;
+    h2 {
+      color: $primary;
+    }
+
+    article {
+      div {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 30px;
+
+        h4 {
+          color: $primary-emphasis;
+        }
+
+        p {
+          color: $primary;
+        }
+      }
+    }
+  }
+}
