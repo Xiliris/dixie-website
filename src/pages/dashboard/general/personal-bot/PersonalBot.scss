@@ -1,0 +1,18 @@
+@import "../../../../global/mixins.scss", "../../../../global/colors.scss";
+
+.bot-preview {
+  background-color: $backgroud-emphasis;
+  padding: 20px;
+  width: 100%;
+  .activity {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+
+    .text-input {
+      margin-top: auto;
+    }
+  }
+}

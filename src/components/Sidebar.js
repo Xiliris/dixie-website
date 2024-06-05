@@ -37,7 +37,14 @@ function Sidebar() {
       </div>
       <div>
         <h5>General</h5>
-        <ul></ul>
+        <ul>
+          <Link to={`/dashboard/${id}/personal-bot`}>
+            <li>
+              <span class="material-symbols-outlined">star</span>
+              Personal Bot
+            </li>
+          </Link>
+        </ul>
       </div>
       <div>
         <h5>Managment</h5>

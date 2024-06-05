@@ -7,6 +7,7 @@
 
     form {
       @include dashContent;
+      justify-content: flex-start;
       width: 100%;
       height: calc(100vh - 80px);
       flex-grow: 1;
@@ -15,7 +16,10 @@
     }
   }
   .title-component {
-    position: relative;
-    left: 40%;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    width: 100%;
   }
 }

@@ -2,11 +2,11 @@ import React from "react";
 import PropTypes from "prop-types";
 import "./Select.scss";
 
-function Select({ name, options, selectedOption, onChange }) {
+function Select({ name, options, defaultValue, onChange }) {
   return (
     <div className="select-input">
       <label htmlFor={name}>{name}</label>
-      <select id={name} value={selectedOption} onChange={onChange}>
+      <select id={name} value={defaultValue} onChange={onChange}>
         {options.map((option) => (
           <option key={option.value} value={option.value}>
             {option.label}
