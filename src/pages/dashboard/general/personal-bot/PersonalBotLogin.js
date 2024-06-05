@@ -1,10 +1,10 @@
 import "./PersonalBotLogin.scss";
-import Navbar from "../../../components/Navbar";
-import Header from "../../../components/Header";
+import Navbar from "../../../../components/Navbar";
+import Header from "../../../../components/Header";
 import { useParams, useNavigate } from "react-router-dom";
 import { useState } from "react";
-import axios from "../../../axios";
-import Button from "../../../components/Button";
+import axios from "../../../../axios";
+import Button from "../../../../components/Button";
 import Cookies from "universal-cookie";
 
 function PersonalBotLogin() {
@@ -27,7 +27,7 @@ function PersonalBotLogin() {
     setLoading(true);
     try {
       const response = await axios.post(
-        `/personal-bot/login`,
+        `/dashboard/general/personal-bot/login`,
         {
           personalBotToken: token,
           guildId: id,

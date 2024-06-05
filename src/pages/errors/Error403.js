@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
 import "./Errors.scss";
-function Error() {
+function Error403() {
   return (
     <main id="errors">
       <h1>Error 403 (Forbidden)</h1>
@@ -16,4 +16,4 @@ function Error() {
   );
 }
 
-export default Error;
+export default Error403;
