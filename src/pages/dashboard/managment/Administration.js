@@ -4,6 +4,9 @@ import { useParams } from "react-router-dom";
 import Title from "../../../components/Title";
 import Multiselect from "../../../components/Multiselect";
 import LayoutContainer from "../../../components/LayoutContainer";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import "../managment/ToastCustomScss.scss";
 
 const Administration = () => {
   const { id } = useParams();
@@ -64,8 +67,14 @@ const Administration = () => {
         requestData
       );
       setResponseMessage(response.data.message);
+      toast.success(response.data.message, {
+        className: "custom-toast",
+      });
     } catch (error) {
       setError(error.message);
+      toast.error(error.message, {
+        className: "custom-toast-error",
+      });
     }
   };
 
@@ -119,7 +128,7 @@ const Administration = () => {
       >
         Submit
       </button>
-      {responseMessage && <p className="response-message">{responseMessage}</p>}
+      <ToastContainer position="bottom-center" className="toast-container" />
     </LayoutContainer>
   );
 };

@@ -6,7 +6,9 @@ import getUserData from "../../modules/userData";
 import Button from "../../components/Button";
 import TextInput from "../../components/TextInput";
 import Select from "../../components/Select";
-
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import ".././dashboard/managment/ToastCustomScss.scss";
 import defaultLogo from "../../imgs/dixie.svg";
 import config from "../../config.json";
 
@@ -24,13 +26,27 @@ function Profile() {
     getUser();
   }, []);
 
+  function setResponseMessage(message, type) {
+    if (type === "error") {
+      toast.error(message, {
+        className: "custom-toast-error",
+      });
+    } else {
+      toast.success(message, {
+        className: "custom-toast",
+      });
+    }
+  }
+
   function handleChange(e) {}
   function handleSubmit(e) {
     e.preventDefault();
+    setResponseMessage("Profile updated successfully!", "success");
   }
 
   return (
     <>
+      <ToastContainer position="bottom-center" className="toast-container" />
       <Navbar />
       <Header title="Profile" />
       <main className="profile-container">
