@@ -1,36 +1,51 @@
 import "./PersonalBotLogin.scss";
-import Navbar from "../../../../components/Navbar";
-import Header from "../../../../components/Header";
-import { useParams } from "react-router-dom";
+import Navbar from "../../../components/Navbar";
+import Header from "../../../components/Header";
+import { useParams, useNavigate } from "react-router-dom";
 import { useState } from "react";
-import axios from "../../../../axios";
+import axios from "../../../axios";
+import Button from "../../../components/Button";
+import Cookies from "universal-cookie";
 
 function PersonalBotLogin() {
   const { id } = useParams();
+  const navigate = useNavigate();
   const [tokenError, setTokenError] = useState("");
+  const [loading, setLoading] = useState(false);
+  const cookies = new Cookies(null, { path: "/" });
+  const userToken = cookies.get("token");
 
   const onSubmitLogin = async (e) => {
     e.preventDefault();
-    const token = e.target.elements[0].value;
+    const token = e.target.elements.token.value;
 
     if (token.length < 59) {
       setTokenError("(Invalid token)");
       return;
     }
 
-    const response = await axios
-      .post(`/client/login`, {
-        token,
-        guildId: id,
-      })
-      .catch((err) => {
-        setTokenError("(Invalid token)");
-      });
+    setLoading(true);
+    try {
+      const response = await axios.post(
+        `/personal-bot/login`,
+        {
+          personalBotToken: token,
+          guildId: id,
+        },
+        {
+          headers: {
+            token: userToken,
+          },
+        }
+      );
 
-    if (response && response.status === 200) {
-      setTimeout(() => {
-        window.location.reload();
-      }, 1000);
+      if (response.status === 200) {
+        navigate("/profile");
+      }
+    } catch (err) {
+      setTokenError("(Invalid token)");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -42,17 +57,23 @@ function PersonalBotLogin() {
         <section className="bot-login">
           <h2>Bot Login</h2>
           <form onSubmit={onSubmitLogin}>
-            <label>
-              Token <span>{tokenError}</span>
+            <label htmlFor="token">
+              Token <span className="error-text">{tokenError}</span>
             </label>
             <input
               type="password"
+              id="token"
+              name="token"
               placeholder="Enter bot token"
               onChange={() => {
                 setTokenError("");
               }}
+              aria-invalid={!!tokenError}
+              aria-describedby="token-error"
             />
-            <button type="submit">Save</button>
+            <Button submit disabled={loading}>
+              {loading ? "Saving..." : "Save"}
+            </Button>
           </form>
         </section>
 

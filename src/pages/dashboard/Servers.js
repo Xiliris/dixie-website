@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import config from "../../config";
 import userGuilds from "../../modules/userGuilds";
 import itemAnimation from "../../animations/itemAnimation";
 import grayLogo from "../../imgs/gray-logo.png";
@@ -49,6 +50,9 @@ function Servers() {
 }
 
 function ServerItem({ server, index }) {
+  async function invite() {
+    window.open(config.invite_url, "_blank", "noopener,noreferrer");
+  }
   return (
     <motion.article
       variants={itemAnimation}
@@ -69,9 +73,13 @@ function ServerItem({ server, index }) {
         <h3>{server.name}</h3>
       </div>
 
-      <Link to={`/dashboard/${server.id}`}>
-        <button className="btn-emphasis">Manage</button>
-      </Link>
+      {server.joined ? (
+        <Link to={`/dashboard/${server.id}`}>
+          <button className="btn-emphasis">Manage</button>
+        </Link>
+      ) : (
+        <button onClick={() => invite()}>Invite</button>
+      )}
     </motion.article>
   );
 }

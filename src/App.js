@@ -13,6 +13,9 @@ import Error401 from "./pages/errors/Error401";
 import Error403 from "./pages/errors/Error403";
 import Error404 from "./pages/errors/Error404";
 
+import Profile from "./pages/profile/Profile";
+import PersonalBotLogin from "./pages/profile/personal-bot/PersonalBotLogin";
+
 import ProtectedAuth from "./pages/auth/ProtectedAuth";
 import ProtectedPermissions from "./pages/auth/ProtectedPermissions";
 import ChatManagment from "./pages/dashboard/managment/ChatManagment";
@@ -26,6 +29,24 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/logout" element={<Logout />} />
+
+        <Route
+          path="/profile"
+          element={
+            <ProtectedAuth>
+              <Profile />
+            </ProtectedAuth>
+          }
+        />
+
+        <Route
+          path="/profile/personal-bot/login"
+          element={
+            <ProtectedAuth>
+              <PersonalBotLogin />
+            </ProtectedAuth>
+          }
+        />
 
         <Route
           path="/dashboard"

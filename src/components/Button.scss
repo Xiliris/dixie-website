@@ -1,0 +1,26 @@
+@import "../global/colors.scss", "../global/mixins.scss";
+
+.btn {
+  background-color: transparent;
+  color: $primary-emphasis;
+  border: 2px solid $primary-emphasis;
+  text-align: center;
+  min-width: 160px;
+  min-height: 40px;
+  font-size: 1rem;
+  border-radius: 6px;
+  font-weight: 600;
+  padding: 10px 20px;
+  cursor: pointer;
+
+  transition: scale 0.2s ease-in-out;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+.btn-primary {
+  background-color: $primary-emphasis;
+  color: $backgroud;
+}

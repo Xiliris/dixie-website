@@ -1,7 +1,7 @@
-@import "../../../../global/mixins.scss", "../../../../global/colors.scss";
+@import "../../../global/mixins.scss", "../../../global/colors.scss";
 
 .personal-bot-login {
-  @include dashDefault;
+  @include default;
 
   section {
     margin-top: 40px;
@@ -32,12 +32,8 @@
       }
 
       button {
-        @include primaryButton;
-        margin-top: 10px;
-        padding: 5px 20px;
-        border-radius: 5px;
-        font-size: 1em;
         margin-left: auto;
+        margin-top: 20px;
       }
     }
   }
@@ -63,41 +59,6 @@
 
         p {
           color: $primary;
-        }
-      }
-    }
-  }
-}
-
-@media screen and (max-width: $mobile) {
-  .personal-bot {
-    h1 {
-      font-size: 2em;
-    }
-
-    form {
-      label {
-        font-size: 1em;
-      }
-
-      input {
-        font-size: 0.9em;
-      }
-
-      button {
-        font-size: 0.9em;
-      }
-    }
-
-    .how-to {
-      margin-top: 80px;
-      h2 {
-        font-size: 1.3em;
-      }
-
-      article {
-        p {
-          font-size: 0.8em;
         }
       }
     }
