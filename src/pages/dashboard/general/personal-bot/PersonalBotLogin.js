@@ -34,7 +34,7 @@ function PersonalBotLogin() {
     setLoading(true);
     try {
       const response = await axios.post(
-        `/personal-bot/login`,
+        `/dashboard/general/personal-bot/login`,
         {
           personalBotToken: token,
           guildId: id,
