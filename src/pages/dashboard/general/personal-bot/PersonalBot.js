@@ -153,7 +153,7 @@ function PersonalBot() {
               ]}
             />
             <TextInput
-              placeholder="Enter bot activity"
+              placeholder="Enter bot name"
               defaultValue={apperence.activity}
             />
           </div>
