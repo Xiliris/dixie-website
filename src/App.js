@@ -12,12 +12,14 @@ import Logout from "./pages/auth/Logout";
 import Error401 from "./pages/errors/Error401";
 import Error403 from "./pages/errors/Error403";
 import Error404 from "./pages/errors/Error404";
+import ProtectedPermissions from "./pages/auth/ProtectedPermissions";
+import ProtectedAuth from "./pages/auth/ProtectedAuth";
 
 import Profile from "./pages/profile/Profile";
-import PersonalBotLogin from "./pages/profile/personal-bot/PersonalBotLogin";
 
-import ProtectedAuth from "./pages/auth/ProtectedAuth";
-import ProtectedPermissions from "./pages/auth/ProtectedPermissions";
+import PersonalBotLogin from "./pages/dashboard/general/personal-bot/PersonalBotLogin";
+import PersonalBot from "./pages/dashboard/general/personal-bot/PersonalBot";
+
 import ChatManagment from "./pages/dashboard/managment/ChatManagment";
 import Administration from "./pages/dashboard/managment/Administration";
 import WelcomeGoodbye from "./pages/dashboard/managment/WelcomeGoodbye";
@@ -40,15 +42,6 @@ function App() {
         />
 
         <Route
-          path="/profile/personal-bot/login"
-          element={
-            <ProtectedAuth>
-              <PersonalBotLogin />
-            </ProtectedAuth>
-          }
-        />
-
-        <Route
           path="/dashboard"
           element={
             <ProtectedAuth>
@@ -66,6 +59,24 @@ function App() {
             </ProtectedAuth>
           }
         />
+        <Route
+          path="/dashboard/:id/personal-bot/login"
+          element={
+            <ProtectedAuth>
+              <PersonalBotLogin />
+            </ProtectedAuth>
+          }
+        />
+
+        <Route
+          path="/dashboard/:id/personal-bot"
+          element={
+            <ProtectedAuth>
+              <PersonalBot />
+            </ProtectedAuth>
+          }
+        />
+
         <Route
           path="/dashboard/:id/chat-management"
           element={

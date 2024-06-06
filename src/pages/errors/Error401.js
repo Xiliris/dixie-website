@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import config from "../../config";
 
 import "./Errors.scss";
-function Error() {
+function Error401() {
   return (
     <main id="errors">
       <h1>Error 401 (Unauthorized)</h1>
@@ -17,4 +17,4 @@ function Error() {
   );
 }
 
-export default Error;
+export default Error401;

@@ -4,6 +4,7 @@ import axios from "../../../axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "../managment/ToastCustomScss.scss";
+import "react-toastify/dist/ReactToastify.css";
 import "./WelcomeGoodbye.scss";
 
 import Navbar from "../../../components/Navbar";

@@ -1,13 +1,14 @@
 import "./PersonalBotLogin.scss";
-import Navbar from "../../../components/Navbar";
-import Header from "../../../components/Header";
+import Navbar from "../../../../components/Navbar";
+import Header from "../../../../components/Header";
 import { useParams, useNavigate } from "react-router-dom";
 import { useState } from "react";
-import axios from "../../../axios";
-import Button from "../../../components/Button";
+import axios from "../../../../axios";
+import Button from "../../../../components/Button";
 import Cookies from "universal-cookie";
 import { toast, ToastContainer } from "react-toastify";
-import "../../dashboard/managment/ToastCustomScss.scss"
+import "react-toastify/dist/ReactToastify.css";
+import "../../managment/ToastCustomScss.scss";
 
 function PersonalBotLogin() {
   const { id } = useParams();
