@@ -1,0 +1,39 @@
+@import "../../../global/colors.scss", "../../../global/mixins.scss";
+
+.toast-container {
+  font-family: "IBM Plex Mono", monospace;
+}
+
+.custom-toast {
+  background-color: $backgroud-emphasis !important;
+  color: white !important;
+  width: 500px !important;
+}
+
+.custom-toast-error {
+  background-color: gray !important;
+  color: white !important;
+  width: 500px !important;
+}
+
+.custom-toast .Toastify__toast-icon svg {
+  fill: $primary-emphasis !important;
+}
+
+.custom-toast-error .Toastify__toast-icon svg {
+  fill: $backgroud-emphasis !important;
+}
+
+.custom-toast .Toastify__progress-bar {
+  animation-duration: 5s !important;
+  background-color: white;
+}
+
+.custom-toast-error .Toastify__progress-bar {
+  background-color: $primary-emphasis;
+  animation-duration: 5s !important;
+}
+
+.Toastify__progress-bar--success {
+  background: #f44336;
+}

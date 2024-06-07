@@ -10,10 +10,14 @@ import Select from "../../../../components/Select";
 import TextInput from "../../../../components/TextInput";
 import Button from "../../../../components/Button";
 import ImageInput from "../../../../components/ImageInput";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function PersonalBot() {
   const { id } = useParams();
   const navigate = useNavigate();
+  const [responseMessage, setResponseMessage] = useState("");
+  const [error, setError] = useState(null);
   const [apperence, setApperence] = useState({
     avatar: false,
     name: "Dixie",
@@ -30,9 +34,13 @@ function PersonalBot() {
         setApperence(res.data);
       })
       .catch((err) => {
-        console.log(err);
+        setError(err.message);
+        toast.error(err.message, {
+          className: "custom-toast-error",
+        });
       });
-  }, []);
+  }, [id]);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -87,18 +95,24 @@ function PersonalBot() {
       formData.append("activity", activityInput.value);
       formData.append("guildId", id);
 
-      await axios
-        .post(`/client/apperence/${id}`, formData, {
+      try {
+        const response = await axios.post(`/client/apperence/${id}`, formData, {
           headers: { "Content-Type": "multipart/form-data" },
-        })
-        .catch((err) => {
-          navigate("/errors/401");
         });
+        toast.success(response.data.message, {
+          className: "custom-toast",
+        });
+      } catch (err) {
+        toast.error(error.message, {
+          className: "custom-toast-error",
+        });
+      }
     }
   };
 
   return (
     <>
+      <ToastContainer position="bottom-center" className="toast-container" />
       <LayoutContainer headTitle="Personal Bot" handleSubmit={handleSubmit}>
         <Title>Personal Bot</Title>
         <section className="bot-preview">
