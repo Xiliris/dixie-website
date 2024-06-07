@@ -99,6 +99,7 @@ function PersonalBot() {
         const response = await axios.post(`/client/apperence/${id}`, formData, {
           headers: { "Content-Type": "multipart/form-data" },
         });
+        setResponseMessage(response.data.message);
         toast.success(response.data.message, {
           className: "custom-toast",
         });
