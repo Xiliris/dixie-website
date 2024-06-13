@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import "./Button.scss";
 
-function Button({ href, styleType, children, onClick, submit }) {
+function Button({ relative, href, styleType, children, onClick, submit }) {
   const handleClick = (event) => {
     if (onClick) {
       event.preventDefault();

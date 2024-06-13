@@ -1,16 +1,20 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "../../../axios";
 import { useParams } from "react-router-dom";
 import "./ChatManagment.scss";
 import Title from "../../../components/Title";
 import LayoutContainer from "../../../components/LayoutContainer";
 import Multiselect from "../../../components/Multiselect";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import "../managment/ToastCustomScss.scss";
 
 function ChatManagment() {
   const { id } = useParams();
   const [sections, setSections] = useState({});
   const [guildChannels, setGuildChannels] = useState([]);
   const [guildRoles, setGuildRoles] = useState([]);
+  const [responseMessage, setResponseMessage] = useState("");
 
   useEffect(() => {
     axios
@@ -24,7 +28,10 @@ function ChatManagment() {
         }
       })
       .catch((error) => {
-        console.log(error);
+        setResponseMessage(error.message);
+        toast.error(error.message, {
+          className: "custom-toast-error",
+        });
       });
   }, [id]);
 
@@ -66,10 +73,16 @@ function ChatManagment() {
     axios
       .post(`/dashboard/management/chat/${id}`, requestData)
       .then((response) => {
-        console.log("Data saved successfully:", response.data);
+        setResponseMessage(response.data.message);
+        toast.success(response.data.message, {
+          className: "custom-toast",
+        });
       })
       .catch((error) => {
-        console.error("There was an error saving the data!", error);
+        setResponseMessage(error.message);
+        toast.error(error.message, {
+          className: "custom-toast-error",
+        });
       });
   };
 
@@ -91,13 +104,13 @@ function ChatManagment() {
         </div>
         <button type="submit">Submit</button>
       </LayoutContainer>
+      <ToastContainer position="bottom-center" className="toast-container" />
     </>
   );
 }
 
 const ItemSection = ({ title, data, guildChannels, guildRoles, onChange }) => {
   const handleChannelsChange = (name, selectedOptions) => {
-    console.log("selectedOptions", selectedOptions);
     onChange(title, "disabledChannels", selectedOptions);
   };
 

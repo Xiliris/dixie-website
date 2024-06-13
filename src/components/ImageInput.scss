@@ -1,0 +1,32 @@
+.image-input {
+  img {
+    cursor: pointer;
+  }
+
+  .small {
+    width: 100px;
+    height: 100px;
+  }
+
+  .medium {
+    width: 150px;
+    height: 150px;
+  }
+
+  .large {
+    width: 200px;
+    height: 200px;
+  }
+
+  .rounded {
+    border-radius: 12px;
+  }
+
+  .circle {
+    border-radius: 50%;
+  }
+
+  .hide {
+    display: none;
+  }
+}
