@@ -1,0 +1,25 @@
+@import "../global/colors.scss", "../global/mixins.scss";
+.main-container {
+  position: relative;
+  display: flex;
+  .layout-container {
+    width: 100%;
+
+    form {
+      @include dashContent;
+      justify-content: flex-start;
+      width: 100%;
+      height: calc(100vh - 80px);
+      flex-grow: 1;
+      overflow-y: scroll;
+      align-items: start;
+    }
+  }
+  .title-component {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    width: 100%;
+  }
+}

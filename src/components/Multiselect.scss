@@ -1,0 +1,39 @@
+@import "../global/colors.scss", "../global/mixins.scss";
+
+.multi-select {
+  .select__control--is-focused {
+    border: 1px solid $secondary !important;
+    box-shadow: none;
+  }
+
+  .select__control--menu-is-open {
+    border: 1px solid $primary-emphasis !important;
+    box-shadow: none;
+  }
+
+  .select__control {
+    background-color: transparent;
+    border: 1px solid $secondary;
+    cursor: pointer;
+    &:hover {
+      border: 1px solid $secondary;
+    }
+  }
+
+  .select__menu {
+    .select__menu-list {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      background-color: $secondary;
+      .select__option {
+        width: 100%;
+        cursor: pointer;
+        padding: 10px;
+        &:hover {
+          background-color: $primary;
+        }
+      }
+    }
+  }
+}

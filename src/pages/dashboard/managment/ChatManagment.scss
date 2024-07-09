@@ -1,0 +1,26 @@
+@import "../../../global/colors.scss", "../../../global/mixins.scss";
+
+.item-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
+  gap: 50px;
+  width: 100%;
+  div {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: fit-content;
+  }
+  article {
+    background-color: $backgroud-emphasis;
+    padding: 20px;
+    border-radius: 12px;
+  }
+}
+
+.infractions-card {
+  background-color: $backgroud-emphasis;
+  padding: 20px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+}

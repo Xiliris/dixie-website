@@ -2,9 +2,10 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import config from "../../config.json";
+import config from "../../config";
 import userGuilds from "../../modules/userGuilds";
 import itemAnimation from "../../animations/itemAnimation";
+import grayLogo from "../../imgs/gray-logo.png";
 
 import Navbar from "../../components/Navbar";
 import Header from "../../components/Header";
@@ -49,6 +50,9 @@ function Servers() {
 }
 
 function ServerItem({ server, index }) {
+  async function invite() {
+    window.open(config.invite_url, "_blank", "noopener,noreferrer");
+  }
   return (
     <motion.article
       variants={itemAnimation}
@@ -59,7 +63,11 @@ function ServerItem({ server, index }) {
     >
       <div>
         <img
-          src={`https://cdn.discordapp.com/icons/${server.id}/${server.icon}`}
+          src={
+            server.icon
+              ? `https://cdn.discordapp.com/icons/${server.id}/${server.icon}`
+              : grayLogo
+          }
           alt={server.name}
         />
         <h3>{server.name}</h3>
@@ -70,13 +78,7 @@ function ServerItem({ server, index }) {
           <button className="btn-emphasis">Manage</button>
         </Link>
       ) : (
-        <button
-          onClick={() => {
-            window.open(config.invite_url);
-          }}
-        >
-          Invite
-        </button>
+        <button onClick={() => invite()}>Invite</button>
       )}
     </motion.article>
   );

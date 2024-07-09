@@ -1,0 +1,29 @@
+@import "../global/colors.scss";
+@import "../global/mixins.scss";
+
+.select-input {
+  @include flex($direction: column, $align: flex-start);
+  gap: 0;
+  width: 100%;
+  label {
+    color: $primary;
+    font-size: 1em;
+    margin-left: 10px;
+  }
+
+  select {
+    background-color: $backgroud;
+    border: 1px solid $backgroud;
+    border-radius: 5px;
+    padding: 10px 15px;
+    width: 100%;
+    font-size: 1.1em;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+
+    &:focus {
+      outline: none;
+    }
+  }
+}

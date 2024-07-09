@@ -1,0 +1,80 @@
+@import "../global/colors.scss", "../global/mixins.scss";
+
+.sidebar {
+  overflow-y: auto;
+  background-color: $backgroud-emphasis;
+  flex: 0 1 300px;
+  padding: 20px 30px;
+  height: calc(100vh - 80px);
+  z-index: 100;
+
+  .title {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    border-bottom: 1px solid $secondary;
+    padding-bottom: 10px;
+    gap: 10px;
+    margin-bottom: 20px;
+    img {
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      border: 2px solid $secondary;
+    }
+    h4 {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      text-align: start;
+      color: $primary;
+    }
+  }
+
+  div {
+    margin-bottom: 15px;
+
+    h5 {
+      color: $primary;
+      margin-bottom: 5px;
+      font-size: 1em;
+    }
+
+    ul {
+      padding: 0 20px;
+      @include flex(
+        $justify: flex-start,
+        $align: flex-start,
+        $direction: column
+      );
+      gap: 10px;
+
+      li {
+        color: $secondary;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 10px;
+        transition: color 0.1s ease-in-out;
+
+        i {
+          transition: color 0.1s ease-in-out;
+        }
+
+        &:hover {
+          color: $primary;
+          span {
+            color: $primary-emphasis;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: $tablet) {
+  .sidebar {
+    width: 100%;
+    position: absolute;
+  }
+}

@@ -5,10 +5,8 @@ import config from "../config.json";
 import getUserData from "../modules/userData";
 
 import "./Navbar.scss";
-import "./Profile.scss";
 
-function Navbar() {
-  const [menuState, setMenuState] = useState("menu");
+function Navbar({ navType }) {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
@@ -22,46 +20,11 @@ function Navbar() {
     getUser();
   }, []);
 
-  function toggleMenu() {
-    const menu = document.getElementById("menu-items");
-
-    if (menu.style.display === "flex") {
-      menu.style.display = "none";
-      setMenuState("menu");
-      return;
-    } else {
-      menu.style.display = "flex";
-      setMenuState("close");
-      return;
-    }
-  }
-
   return (
-    <nav>
+    <nav className={navType}>
       <Link to="/">
         <img src={logo} alt="Dixie bot" className="logo" />
       </Link>
-      <ul id="menu-items">
-        <Link to={config.support_url}>
-          <li>Support</li>
-        </Link>
-        <Link to="/#about">
-          <li>About</li>
-        </Link>
-        <Link to="/#features">
-          <li>Features</li>
-        </Link>
-        <Link to="/premium">
-          <li className="emphasis">
-            <span className="material-symbols-outlined">workspace_premium</span>
-            Premium
-          </li>
-        </Link>
-      </ul>
-
-      <span className="material-symbols-outlined category" onClick={toggleMenu}>
-        {menuState}
-      </span>
 
       {user ? (
         <UserComponent id={user.id} avatar={user.avatar} />
@@ -97,7 +60,7 @@ function UserComponent({ id, avatar }) {
           expand_more
         </span>
         <img
-          src={`https://cdn.discordapp.com/avatars/${id}/${avatar}`}
+          src={`https://cdn.discordapp.com/avatars/${id}/${avatar}.webp?size=512`}
           alt="User avatar"
         />
       </div>
@@ -131,19 +94,13 @@ function UserComponent({ id, avatar }) {
         <Link to="/premium">
           <li className="emphasis">
             <span className="material-symbols-outlined">workspace_premium</span>
-            Premium
+            Pricing
           </li>
         </Link>
         <Link to="/#features">
           <li>
             <span className="material-symbols-outlined">star</span>
             Features
-          </li>
-        </Link>
-        <Link to="/dashboard">
-          <li>
-            <span className="material-symbols-outlined">terminal</span>
-            Custom Bot
           </li>
         </Link>
         <hr />

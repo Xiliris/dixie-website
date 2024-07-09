@@ -6,8 +6,6 @@ async function getGuildPermissions(id) {
   const token = cookies.get("token");
 
   if (!token) return null;
-  console.log(id);
-  console.log(token);
 
   const response = await axios
     .get(`/dashboard/permissions/${id}`, {
@@ -16,6 +14,7 @@ async function getGuildPermissions(id) {
       },
     })
     .catch((error) => {
+      console.log(error);
       return null;
     });
 
