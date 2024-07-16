@@ -1,0 +1,7 @@
+@import "../global/colors.scss", "../global/mixins.scss";
+
+#Maintenance {
+  @include flex(center, center, column);
+  height: 100vh;
+  background: linear-gradient($backgroud 10%, $backgroud-fade 80%);
+}
