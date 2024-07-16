@@ -24,3 +24,17 @@
   border-radius: 12px;
   margin-bottom: 20px;
 }
+
+textarea {
+  width: 100%;
+  padding: 10px;
+  border-radius: 12px;
+  border: 1px solid $backgroud;
+  resize: none;
+  font-size: 1rem;
+  color: $primary;
+  background-color: $backgroud;
+  &:focus {
+    outline: none;
+  }
+}
