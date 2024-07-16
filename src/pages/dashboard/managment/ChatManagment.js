@@ -62,6 +62,7 @@ function ChatManagment() {
               name: role.label ? role.label : role.name,
             }))
           : [],
+        blacklisted: sections[section].blacklisted,
       };
       return acc;
     }, {});
@@ -121,7 +122,7 @@ const ItemSection = ({ title, data, guildChannels, guildRoles, onChange }) => {
   return (
     <article>
       <div>
-        <h2>{title}</h2>
+        <h2>{title.replace("_", " ")}</h2>
         <input
           type="checkbox"
           checked={data.enabled}
@@ -177,6 +178,19 @@ const ItemSection = ({ title, data, guildChannels, guildRoles, onChange }) => {
         }))}
         onChange={handleRolesChange}
       />
+      {(data.blacklisted == "" || data.blacklisted) && (
+        <>
+          <label>
+            Blacklisted Words
+            <br />
+            (separated by commas)
+          </label>
+          <textarea
+            value={String(data.blacklisted)}
+            onChange={(e) => onChange(title, "blacklisted", e.target.value)}
+          />
+        </>
+      )}
     </article>
   );
 };
