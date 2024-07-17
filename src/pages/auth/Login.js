@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import Cookies from "universal-cookie";
-import axios from "../../axios";
+import axios from "../../axios.js";
 
 function Login() {
   const navigate = useNavigate();
