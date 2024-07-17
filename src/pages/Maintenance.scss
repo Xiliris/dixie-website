@@ -1,0 +1,68 @@
+@import "../global/colors.scss", "../global/mixins.scss";
+
+#Maintenance {
+  @include flex(center, center, column);
+  height: 100vh;
+  background: linear-gradient($backgroud 10%, $backgroud-fade 80%);
+  position: relative;
+
+  .dixie {
+    width: 10em;
+    height: 10em;
+    margin-bottom: 30px;
+    z-index: 2;
+  }
+
+  .transdixie {
+    width: 40em;
+    height: 40em;
+    z-index: 1;
+    position: absolute;
+    left: 2%;
+  }
+
+  .ellipsa {
+    width: 12em;
+    height: 12em;
+    z-index: 1;
+    position: absolute;
+  }
+
+  .e1 {
+    right: 20%;
+    top: 15%;
+  }
+
+  .e2 {
+    right: -4%;
+    top: 55%;
+  }
+
+  .e3 {
+    right: 22%;
+    bottom: -6%;
+  }
+  
+  h1 {
+    font-size: 3em;
+    line-height: 1em;
+    margin-bottom: 6px;
+    color: $primary;
+
+    .intro {
+      color: $primary;
+    }
+    
+    .name {
+      color: $primary-emphasis;
+    }
+  }
+  
+  P {
+    text-align: left;
+    color: $secondary;
+    font-size: 2.2em;
+    margin-bottom: 20px;
+    font-weight: bold;
+  }
+}
