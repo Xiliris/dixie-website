@@ -1,73 +1,104 @@
 @import "../global/colors.scss", "../global/mixins.scss";
 
+@import url(https://fonts.googleapis.com/css?family=Montserrat:100,200,300,regular,500,600,700,800,900,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic);
+
 #home {
-  @include default;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  height: 80vh;
-  overflow: hidden;
-
-  h1 {
-    color: $primary;
-    font-size: 4em;
-    line-height: 1em;
-    margin-bottom: 30px;
-  }
-
-  P {
-    text-align: left;
-    color: $secondary;
-    font-size: 1.3em;
-    margin-bottom: 20px;
-  }
-
-  div {
+    @include default;
     display: flex;
-    gap: 20px;
-    margin-top: 16px;
-    button {
-      @include secondaryButton;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    padding: 0 20px;
 
-      padding: 10px 20px;
-      border-radius: 6px;
-      font-size: 1em;
-    }
-    .btn-emphasis {
-      @include primaryButton;
 
-      i {
-        margin-right: 5px;
-      }
+    h1 {
+        color: $primary;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 1.875rem;
+        font-weight: 700;
+        text-align: center;
+        margin-bottom: 1.25rem;
+
+
     }
-  }
+
+    p {
+        color: $secondary;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 1.125rem;
+        font-weight: 300;
+        text-align: center;
+        margin-bottom: 1.25rem;
+    }
+
+    .main-content {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .main-content-buttons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            margin-top: 1.25rem;
+        }
+
+
+        .btn-invite {
+            background-color: $primary-emphasis;
+            color: #000;
+            border: 1px solid $primary-emphasis;
+            cursor: pointer;
+            transition: background-color 0.1s ease-in-out, border 0.1s ease-in-out,
+                color 0.1s ease-in-out;
+            width: 100%;
+            height: 2.5rem;
+            border-radius: .375rem;
+            font-size: 1rem;
+            font-weight: 500;
+            line-height: 1.5;
+            text-align: center;
+            text-decoration: none;
+            margin: 1rem;
+            padding: 0.5rem;
+
+
+            &:hover {
+                background-color: $primary-emphasis-hover;
+                border: 1px solid $primary-emphasis-hover;
+            }
+        }
+    }
 }
 
 @media screen and (max-width: $tablet) {
-  #home {
-    h1 {
-      font-size: 3em;
+    #home {
+        h1 {
+            font-size: 3em;
+        }
+
+        p {
+            font-size: 1.5em;
+        }
     }
-    p {
-      font-size: 1.5em;
-    }
-  }
 }
 
 @media screen and (max-width: $mobile) {
-  #home {
-    h1 {
-      font-size: 1.5em;
-    }
+    #home {
+        h1 {
+            font-size: 1.5em;
+        }
 
-    p {
-      font-size: 1em;
-    }
+        p {
+            font-size: 1em;
+        }
 
-    div {
-      button {
-        font-size: 0.7em;
-      }
+        div {
+            button {
+                font-size: 0.7em;
+            }
+        }
     }
-  }
 }

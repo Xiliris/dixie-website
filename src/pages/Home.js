@@ -1,7 +1,13 @@
-import "./Home.scss";
+import React from "react";
 import Navbar from "../components/Navbar";
 import config from "../config.json";
 import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+import Dixiebot from "../imgs/dixiebot.svg";
+
+import "./Home.scss";
+
 
 function Home() {
   return (
@@ -16,20 +22,23 @@ function Home() {
           budget-friendly, custom Discord bot
           designed to fulfill all your needs.
         </p>
-        <div>
-          <button
-            className="btn-emphasis"
-            onClick={() => {
-              window.open(config.invite_url);
-            }}
-          >
-            <i className="fa-brands fa-discord"></i>Add to Discord
-          </button>
-          <Link to="/#features">
-            <button>Features</button>
-          </Link>
-        </div>
-      </main>
+        <section className="main-content">
+          <img src={Dixiebot} alt="Dixiebot" className="dixiebot-img" />
+          <div className="main-content-buttons">
+            <button
+              className="btn-invite"
+              onClick={() => {
+                window.open(config.invite_url);
+              }}
+            >
+              <i className="fa-brands fa-discord"></i>Add to Discord
+            </button>
+            <Link to="/#features">
+              <button>Features</button>
+            </Link>
+          </div>
+        </section>
+      </main >
     </>
   );
 }
