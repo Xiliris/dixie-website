@@ -3,11 +3,15 @@ import Navbar from "../components/Navbar";
 import config from "../config.json";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faDiscord } from "@fortawesome/free-brands-svg-icons";
+import { library } from "@fortawesome/fontawesome-svg-core";
+
 
 import Dixiebot from "../imgs/dixiebot.svg";
 
 import "./Home.scss";
 
+library.add(faDiscord);
 
 function Home() {
   return (
@@ -25,16 +29,11 @@ function Home() {
         <section className="main-content">
           <img src={Dixiebot} alt="Dixiebot" className="dixiebot-img" />
           <div className="main-content-buttons">
-            <button
-              className="btn-invite"
-              onClick={() => {
-                window.open(config.invite_url);
-              }}
-            >
-              <i className="fa-brands fa-discord"></i>Add to Discord
+            <button className="btn-invite" onClick={() => window.open(config.invite_url)}>
+              <FontAwesomeIcon icon={faDiscord} />Add to Discord
             </button>
             <Link to="/#features">
-              <button>Features</button>
+              <button className="features-btn">Features</button>
             </Link>
           </div>
         </section>
