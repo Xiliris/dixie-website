@@ -9,11 +9,11 @@ function Home() {
       <Navbar />
       <main id="home">
         <h1>
-          Hello! <br></br>My name is Dixie.
+          Hello! My name is Dixie.
         </h1>
         <p>
-          I am the ultimate multitasking,<br></br>
-          budget-friendly, custom Discord bot<br></br>
+          I am the ultimate multitasking,
+          budget-friendly, custom Discord bot
           designed to fulfill all your needs.
         </p>
         <div>

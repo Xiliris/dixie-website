@@ -1,130 +1,69 @@
 @import "../global/colors.scss", "../global/mixins.scss";
+@import url('https://fonts.googleapis.com/css2?family=Questrial&display=swap');
 
-.nav-dashboard {
-  @include excludeDefault;
-  box-shadow: 0 0 3px 1px $backgroud-emphasis;
-  background-color: $backgroud-emphasis;
 
-  .logo {
-    box-shadow: none;
-  }
-}
+.navbar {
+    color: $primary;
+    padding: 1rem;
 
-nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  z-index: 100;
-  @include default;
-  img {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    cursor: pointer;
-  }
-
-  .logo {
-    border: 1px solid $primary-emphasis;
-    box-shadow: 3px 3px 100px 10px $primary-emphasis;
-    transition: box-shadow 0.1s ease-in-out, transform 0.1s ease-in-out;
-    &:hover {
-      transform: scale(1.1);
-      box-shadow: none;
-    }
-  }
-
-  p {
-    cursor: pointer;
-    transition: color 0.1s ease-in-out;
-    color: $secondary;
-    &:hover {
-      color: $hover;
-      transform: scale(1.01);
-    }
-  }
-}
-
-.profile {
-  position: relative;
-
-  #profile-menu {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    img {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
+    .navbar-container {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
     }
 
-    span {
-      transition: transform 0.2s ease-in-out;
-    }
-  }
+    .navbar-links {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
 
-  ul {
-    display: flex;
-    justify-content: space-evenly;
-    align-items: flex-start;
-    flex-direction: column;
-    padding: 5px 0;
-    position: absolute;
-    top: 50px;
-    right: 0;
-    background-color: $backgroud;
-    border: 1px solid $backgroud-emphasis;
-    border-radius: 8px;
-    overflow: hidden;
-    transition: transform 0.2s ease-in-out, opacity 0.1s ease-in;
-    min-width: 200px;
-    z-index: 100;
+        .navbar-link:first-child {
+            margin-left: 1rem;
+            color: $primary-emphasis;
+        }
 
-    hr {
-      width: 100%;
-      border: none;
-      border-bottom: 1px solid $backgroud-emphasis;
-      margin: 5px 0;
-    }
+        .navbar-link {
+            color: $primary;
+            margin-right: 1rem;
+            font-size: 1.25rem;
+            font-weight: 400;
+            font-family: "Questrial", sans-serif;
+        }
 
-    a {
-      width: 100%;
+        .navbar-link:hover {
+            color: $primary-emphasis;
+        }
+
+        .navbar-link.active {
+            color: $primary-emphasis;
+        }
+
+        .navbar-link.active:hover {
+            color: $primary-emphasis-hover;
+        }
     }
 
-    li {
-      display: flex;
-      justify-content: flex-start;
-      align-items: center;
-      gap: 5px;
-      padding: 10px 20px;
-      cursor: pointer;
-      color: $secondary;
-      width: 100%;
-      transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
-      &:hover {
-        background-color: $backgroud-emphasis;
-        color: $primary;
-      }
+    .navbar-logo {
+        width: 6.25rem;
+        height: 6.25rem;
+        border-radius: 50%;
     }
 
-    .danger {
-      color: $danger;
+    .navbar-logo:hover {
+        cursor: pointer;
     }
 
-    .emphasis {
-      color: $primary-emphasis;
+    .login-btn {
+        color: $primary-emphasis;
+        border: .0625rem solid $primary-emphasis;
+        border-radius: .25rem;
+        padding: .5rem 1rem;
+        font-size: 1rem;
+        font-weight: 400;
+
+        &:hover {
+            transform: scale(1.05);
+        }
+
     }
-  }
-
-  .acitive {
-    transform: translateY(0px);
-    opacity: 1;
-    height: initial;
-  }
-
-  .hidden {
-    transform: translateY(-10px);
-    opacity: 0;
-    height: 0;
-  }
 }
