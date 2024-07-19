@@ -1,5 +1,6 @@
 import React from "react";
 import Navbar from "../components/Navbar";
+import Partners from "../components/Partners";
 import config from "../config.json";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -38,6 +39,7 @@ function Home() {
           </div>
         </section>
       </main >
+      <Partners />
     </>
   );
 }
