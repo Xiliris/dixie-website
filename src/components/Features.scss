@@ -14,12 +14,14 @@
 
     h2 {
         color: $primary;
-        font-family: 'Montserrat, sans-serif';
+        font-family: 'Montserrat', sans-serif;
         font-size: 1.875rem;
         font-weight: 700;
         text-align: center;
         margin-bottom: 1.25rem;
+
     }
+
 
     .features-container {
         display: grid;
