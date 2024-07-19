@@ -2,8 +2,7 @@
 
 @import url(https://fonts.googleapis.com/css?family=Montserrat:100,200,300,regular,500,600,700,800,900,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic);
 
-
-.partners-content {
+#features {
     background-color: #FFACDF1A;
     display: flex;
     justify-content: center;
@@ -16,20 +15,18 @@
 
     h2 {
         color: $primary;
-        font-family: 'Montserrat', sans-serif;
+        font-family: 'Montserrat, sans-serif';
         font-size: 1.875rem;
         font-weight: 700;
         text-align: center;
         margin-bottom: 1.25rem;
-
     }
 
-    .partner {
-        display: flex;
-        justify-content: space-evenly;
-        align-items: center;
-        flex-wrap: wrap;
-        width: 100%;
+    .features-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(12.5rem, 1fr));
+        grid-gap: .625rem;
+
         margin: 1.25rem;
 
     }
