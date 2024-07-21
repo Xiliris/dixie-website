@@ -66,3 +66,48 @@
     font-weight: bold;
   }
 }
+
+@media (max-width: $mobile) {
+  #Maintenance {
+    .dixie {
+      width: 9em;
+      height: 9em;
+      order: 3;
+    }
+
+    h1 {
+      font-size: 1.7em;
+    }
+
+    p {
+      font-size: 1.2em;
+    }
+
+    .transdixie {
+      width: 25em;
+      height: 25em;
+      left: -30%;
+      bottom: -4%;
+    }
+
+    .ellipsa {
+      width: 6.5em;
+      height: 6.5em;
+    }
+
+    .e1 {
+      left: 9%;
+      top: 15%;
+    }
+
+    .e2 {
+      right: 25%;
+      top: 3%;
+    }
+
+    .e3 {
+      right: 7%;
+      top: 28%;
+    }
+  }
+}
