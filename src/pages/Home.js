@@ -2,6 +2,7 @@ import React from "react";
 import Navbar from "../components/Navbar";
 import Partners from "../components/Partners";
 import Features from "../components/Features";
+import Footer from "../components/Footer";
 import config from "../config.json";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -41,6 +42,7 @@ function Home() {
         </section>
         <Partners />
         <Features />
+        <Footer />
       </main >
 
     </>
