@@ -112,6 +112,31 @@
         p {
             font-size: 1.5em;
         }
+
+        .main-content {
+            flex-direction: column-reverse;
+
+            .dixiebot-img {
+                width: 50%;
+                height: 50%;
+            }
+
+            .main-content-buttons {
+                margin: 1.25rem;
+
+                .btn-invite {
+                    width: 100%;
+                    height: fit-content;
+                    font-size: 1rem;
+                }
+
+                .features-btn {
+                    width: 100%;
+                }
+
+            }
+
+        }
     }
 }
 

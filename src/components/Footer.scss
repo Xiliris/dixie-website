@@ -92,3 +92,45 @@ footer {
         background-color: #351F32;
     }
 }
+
+@media screen and (max-width: 768px) {
+    footer {
+        padding: 1.25rem;
+        margin: 1.25rem;
+
+        h3 {
+            font-size: 1rem;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+
+            .footer-logo {
+                display: none;
+            }
+
+            .footer-links {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+
+                margin: 1.25rem;
+
+                .footer-left,
+                .footer-right {
+                    font-size: 1rem;
+                }
+            }
+        }
+
+        .footer-bottom {
+            font-size: 1rem;
+        }
+    }
+
+}
