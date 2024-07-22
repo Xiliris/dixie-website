@@ -5,91 +5,110 @@ $tablet: 768px;
 $desktop: 1100px;
 
 @mixin default {
-  max-width: 1100px;
-  padding: 18px 50px;
-  margin: 0 auto;
+    max-width: 1100px;
+    padding: 18px 50px;
+    margin: 0 auto;
 }
 
 @mixin excludeDefault {
-  padding: 18px 30px;
-  margin: 0 auto;
-  max-width: none;
+    padding: 18px 30px;
+    margin: 0 auto;
+    max-width: none;
 }
 
 @mixin dashDefault {
-  margin: 120px auto;
+    margin: 120px auto;
 }
 
 @mixin dashContent {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  overflow-y: scroll;
-  justify-content: space-between;
-  align-items: center;
-  padding: 40px 50px;
-  width: 100%;
-  gap: 20px;
-  overflow-y: auto;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+    justify-content: space-between;
+    align-items: center;
+    padding: 40px 50px;
+    width: 100%;
+    gap: 20px;
+    overflow-y: auto;
 }
 
 @mixin flex($justify: center, $align: center, $direction: row) {
-  display: flex;
-  justify-content: $justify;
-  align-items: $align;
-  flex-direction: $direction;
+    display: flex;
+    justify-content: $justify;
+    align-items: $align;
+    flex-direction: $direction;
 }
 
 @mixin title {
-  color: $primary-emphasis;
-  text-transform: uppercase;
+    color: $primary-emphasis;
+    text-transform: uppercase;
 }
 
 @mixin primaryButton() {
-  background-color: $primary-emphasis;
-  border: 1px solid $primary-emphasis;
-  color: $backgroud;
-  cursor: pointer;
-  transition: background-color 0.1s ease-in-out, border 0.1s ease-in-out,
-    color 0.1s ease-in-out;
+    background-color: $primary-emphasis;
+    border: 1px solid $primary-emphasis;
+    color: $backgroud;
+    cursor: pointer;
+    transition: background-color 0.1s ease-in-out, border 0.1s ease-in-out,
+        color 0.1s ease-in-out;
+    width: 100%;
+    height: 2.5rem;
+    border-radius: .375rem;
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1.5;
+    text-align: center;
+    text-decoration: none;
+    margin: 1rem;
+    padding: 0.5rem;
 
-  &:hover {
-    background-color: $primary-emphasis-hover;
-    border: 1px solid $primary-emphasis-hover;
-  }
+
+    &:hover {
+        background-color: $primary-emphasis-hover;
+        border: 1px solid $primary-emphasis-hover;
+    }
 }
 
 @mixin secondaryButton {
-  @include primaryButton;
-  background-color: $secondary;
-  border: 1px solid $secondary;
-  color: white;
+    border: 1px solid $primary-emphasis;
+    color: $primary-emphasis;
+    border-radius: .375rem;
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1.5;
+    text-align: center;
+    text-decoration: none;
+    margin: 1rem;
+    padding: 0.5rem;
+    width: 100%;
 
-  &:hover {
-    background-color: $secondary-emphasis;
-    border: 1px solid $secondary-emphasis;
-  }
+    &:hover {
+        background-color: $secondary-emphasis;
+        border: 1px solid $secondary-emphasis;
+    }
 }
 
 @mixin textInput() {
-  border: 1px solid $backgroud;
-  border-radius: 5px;
-  padding: 10px;
-  font-size: 1em;
-  color: $primary;
-  background-color: $backgroud-emphasis;
+    border: 1px solid $backgroud;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 1em;
+    color: $primary;
+    background-color: $backgroud-emphasis;
 
-  &:focus {
-    border: 1px solid $primary-emphasis;
-    outline: none;
-  }
-  &:active {
-    border: 1px solid $primary-emphasis;
-  }
+    &:focus {
+        border: 1px solid $primary-emphasis;
+        outline: none;
+    }
+
+    &:active {
+        border: 1px solid $primary-emphasis;
+    }
 }
 
 @mixin disableScroll {
-  ::-webkit-scrollbar {
-    width: 0;
-  }
+    ::-webkit-scrollbar {
+        width: 0;
+    }
 }

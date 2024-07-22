@@ -1,118 +1,47 @@
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
 import logo from "../imgs/dixie.svg";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBars } from "@fortawesome/free-solid-svg-icons";
+
 import config from "../config.json";
 import getUserData from "../modules/userData";
-
 import "./Navbar.scss";
 
-function Navbar({ navType }) {
-  const [user, setUser] = useState(null);
+const Navbar = () => {
+  const [userData, setUserData] = useState(null);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
-    async function getUser() {
-      const user = await getUserData();
-
-      if (user) {
-        setUser(user);
-      }
-    }
-    getUser();
+    getUserData().then((data) => {
+      setUserData(data);
+    });
   }, []);
 
   return (
-    <nav className={navType}>
-      <Link to="/">
-        <img src={logo} alt="Dixie bot" className="logo" />
-      </Link>
-
-      {user ? (
-        <UserComponent id={user.id} avatar={user.avatar} />
-      ) : (
-        <Link to={config.redirect_url}>
-          <p>Login</p>
+    <section className="navbar">
+      <div className="navbar-container">
+        <Link to="/">
+          <img className="navbar-logo" src={logo} alt="Dixie logo" />
         </Link>
-      )}
-    </nav>
-  );
-}
-
-function UserComponent({ id, avatar }) {
-  const [menuState, setMenuState] = useState("hidden");
-  const [arrowState, setArrowState] = useState("rotateX(0deg)");
-  function toggleProfileMenu() {
-    if (menuState === "hidden") {
-      setMenuState("active");
-      setArrowState("rotateX(180deg)");
-    } else {
-      setMenuState("hidden");
-      setArrowState("rotateX(0deg)");
-    }
-  }
-
-  return (
-    <div className="profile">
-      <div id="profile-menu" onClick={toggleProfileMenu}>
-        <span
-          className="material-symbols-outlined"
-          style={{ transform: arrowState }}
-        >
-          expand_more
-        </span>
-        <img
-          src={`https://cdn.discordapp.com/avatars/${id}/${avatar}.webp?size=512`}
-          alt="User avatar"
-        />
+        <button className="menu-toggle" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+          <FontAwesomeIcon icon={faBars} />
+        </button>
+        <div className={`navbar-links ${isMenuOpen ? "open" : ""}`}>
+          <Link to="/" className="navbar-link">Home</Link>
+          <Link to="/about-us" className="navbar-link">About us</Link>
+          <Link to="/features" className="navbar-link">Features</Link>
+          <Link to="/pricing" className="navbar-link">Pricing</Link>
+          <Link to="/contact" className="navbar-link">Contact</Link>
+          {userData ? (
+            <Link to="/profile" className="navbar-link">{userData.name}</Link>
+          ) : (
+            <Link to="/login" className="login-btn">Login</Link>
+          )}
+        </div>
       </div>
-
-      <ul className={menuState}>
-        <Link to="/profile">
-          <li>
-            <span className="material-symbols-outlined">person</span>
-            Profile
-          </li>
-        </Link>
-        <Link to="/dashboard">
-          <li>
-            <span className="material-symbols-outlined">dashboard</span>
-            Dashboard
-          </li>
-        </Link>
-        <Link to={config.support_url}>
-          <li>
-            <span className="material-symbols-outlined">handshake</span>
-            Support
-          </li>
-        </Link>
-        <Link to="/#about">
-          <li>
-            <span className="material-symbols-outlined">description</span>
-            About
-          </li>
-        </Link>
-        <hr />
-        <Link to="/premium">
-          <li className="emphasis">
-            <span className="material-symbols-outlined">workspace_premium</span>
-            Pricing
-          </li>
-        </Link>
-        <Link to="/#features">
-          <li>
-            <span className="material-symbols-outlined">star</span>
-            Features
-          </li>
-        </Link>
-        <hr />
-        <Link to="/logout">
-          <li className="danger">
-            <span className="material-symbols-outlined">logout</span>
-            Logout
-          </li>
-        </Link>
-      </ul>
-    </div>
+    </section>
   );
-}
+};
 
 export default Navbar;

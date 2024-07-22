@@ -1,7 +1,20 @@
-import "./Home.scss";
+import React from "react";
 import Navbar from "../components/Navbar";
+import Partners from "../components/Partners";
+import Features from "../components/Features";
+import Footer from "../components/Footer";
 import config from "../config.json";
 import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faDiscord } from "@fortawesome/free-brands-svg-icons";
+import { library } from "@fortawesome/fontawesome-svg-core";
+
+
+import Dixiebot from "../imgs/dixiebot.svg";
+
+import "./Home.scss";
+
+library.add(faDiscord);
 
 function Home() {
   return (
@@ -9,27 +22,29 @@ function Home() {
       <Navbar />
       <main id="home">
         <h1>
-          Hello! <br></br>My name is Dixie.
+          Hello! My name is Dixie.
         </h1>
         <p>
-          I am the ultimate multitasking,<br></br>
-          budget-friendly, custom Discord bot<br></br>
+          I am the ultimate multitasking,
+          budget-friendly, custom Discord bot
           designed to fulfill all your needs.
         </p>
-        <div>
-          <button
-            className="btn-emphasis"
-            onClick={() => {
-              window.open(config.invite_url);
-            }}
-          >
-            <i className="fa-brands fa-discord"></i>Add to Discord
-          </button>
-          <Link to="/#features">
-            <button>Features</button>
-          </Link>
-        </div>
-      </main>
+        <section className="main-content">
+          <img src={Dixiebot} alt="Dixiebot" className="dixiebot-img" />
+          <div className="main-content-buttons">
+            <button className="btn-invite" onClick={() => window.open(config.invite_url)}>
+              <FontAwesomeIcon icon={faDiscord} />Add to Discord
+            </button>
+            <Link to="/#features">
+              <button className="features-btn">Features</button>
+            </Link>
+          </div>
+        </section>
+        <Partners />
+        <Features />
+        <Footer />
+      </main >
+
     </>
   );
 }
