@@ -94,6 +94,13 @@
 
     }
 
+    .user-data {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        flex-direction: column;
+    }
+
     @media (max-width: 768px) {
         .navbar-container {
             display: flex;
