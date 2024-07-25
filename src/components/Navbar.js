@@ -34,7 +34,10 @@ const Navbar = () => {
           <Link to="/pricing" className="navbar-link">Pricing</Link>
           <Link to="/contact" className="navbar-link">Contact</Link>
           {userData ? (
-            <Link to="/profile" className="navbar-link">{userData.name}</Link>
+            <div className="user-data">
+              <Link to="/profile" className="navbar-link">{userData.global_name} profile page</Link>
+              <Link to="/logout" className="logout-btn">Logout</Link>
+            </div>
           ) : (
             <Link to="/login" className="login-btn">Login</Link>
           )}

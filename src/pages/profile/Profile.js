@@ -18,7 +18,7 @@ function Profile() {
     getUser();
   }, []);
 
-  function handleChange(e) {}
+  function handleChange(e) { }
   function handleSubmit(e) {
     e.preventDefault();
   }
