@@ -35,7 +35,7 @@ const Navbar = () => {
           <Link to="/contact" className="navbar-link">Contact</Link>
           {userData ? (
             <div className="user-data">
-              <Link to="/profile" className="navbar-link">{userData.global_name}</Link>
+              <Link to="/profile" className="navbar-link">{userData.global_name} profile page</Link>
               <Link to="/logout" className="logout-btn">Logout</Link>
             </div>
           ) : (
