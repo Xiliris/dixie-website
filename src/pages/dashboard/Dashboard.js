@@ -14,7 +14,7 @@ function Dashboard() {
       <main className="dashboard">
         <Sidebar />
         <section className="dashboard-content">
-          <h1>Dashboard</h1>
+          <h1 className="font-bold">Dashboard</h1>
           <p>Welcome to the dashboard</p>
         </section>
       </main>

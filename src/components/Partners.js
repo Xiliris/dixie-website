@@ -8,10 +8,9 @@ import "./Partners.scss";
 
 function Partners() {
   return (
-    <section className="partners-content">      <h2>
-      Our founding partners
-    </h2>
-
+    <section className="partners-content">
+      {" "}
+      <h2>Our founding partners</h2>
       <div className="partner">
         <Link to="/csg-unija">
           <img src={CSG} alt="CSG Unija" className="partner-img" />
